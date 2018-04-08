@@ -101,4 +101,4 @@ bot.on("")
  
 })
  
-bot.login('NDMyMjI3MjQ5MTQwNDAwMTM5.DaqOhQ.iHQyo8s4JQ3r3FKvmDMlhEHlHZg')
+bot.login('process.env.BOT_TOKEN')
