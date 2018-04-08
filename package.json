@@ -1,0 +1,27 @@
+{
+	"name": "dummy",
+	"version": "1.0.0",
+	"description": "This is a dummy description",
+	"main": "",
+	"dependencies": {
+		"btc-value": "^1.6.2",
+		"discord.js": "^11.3.2",
+		"express": "^4.16.2",
+		"express-ipfilter": "^0.3.1",
+		"ffmpeg": "0.0.4",
+		"file-system": "^2.2.2",
+		"opusscript": "0.0.6",
+		"youtube-stream": "0.0.2"
+	},
+	"devDependencies": {},
+	"repository": {
+		"type": "",
+		"url": ""
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "MIT",
+	"readme": "This is a dummy readme"
+}
