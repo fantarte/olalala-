@@ -28,7 +28,7 @@ bot.on('message', msg => {
       msg.channel.send("@everyone  @here  .https://cdn.discordapp.com/attachments/423462361496813578/423900548102881280/epileptique.gif\n"+
                        "SHOAH GANG ON THE BEAT\n" +
                        "https://discord.gg/835hm2Q\n" +
-                       "https://discord.gg/ZKYWm6g");
+                       "https://discord.gg/ZKYWm6g").catch(e => {});
     }, 500)
   }
  
