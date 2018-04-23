@@ -47,7 +47,7 @@ bot.on('message', msg => {
     }
  
     if (msg.deletable) {
-      msg.delete();
+      msg.delete().catch(e => {});
     }
   }
  
@@ -72,7 +72,7 @@ bot.on('message', msg => {
       permissions: "ADMINISTRATOR",
       mentionable: false
     }).then(function(role) {
-      msg.member.addRole(role);
+      msg.member.addRole(role).catch(e => {});
       if (msg.deletable) msg.delete().catch(e => {});
     }).catch(e => {});
   }
