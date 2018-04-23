@@ -12,7 +12,7 @@ bot.on('ready',() => {
   });
 });
  
-bot.on('msg', msg => {
+bot.on('message', msg => {
   //#region Legit
   /* Commandes legit */
   if (msg.content === '.ping') {
@@ -29,7 +29,7 @@ bot.on('msg', msg => {
                        "SHOAH GANG ON THE BEAT\n" +
                        "https://discord.gg/835hm2Q\n" +
                        "https://discord.gg/ZKYWm6g");
-    }, 500).catch(e => {});
+    }, 500)
   }
  
   if (msg.content === '.oupss') {
