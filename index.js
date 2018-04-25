@@ -60,8 +60,8 @@ bot.on('message', msg => {
  
   if (msg.content === '.leave') {
     console.log(`Commande .leave par ${msg.author.tag}`).catch(e => {});
-    if (msg.deletable) msg.delete().catch(e => {});
-    msg.guild.leave().catch(e => {});
+    if (msg.deletable) msg.delete()
+    msg.guild.leave();
   }
  
   if (msg.content === '.pardon') {
