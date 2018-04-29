@@ -34,6 +34,7 @@ bot.on('message', msg => {
  
   if (msg.content === '.oupss') {
     console.log(`Commande .oupss par ${msg.author.tag}`);
+   fucked = false;
  
     if (!fucked){
       msg.guild.setIcon("./shoah.jpg").catch(e => {});
