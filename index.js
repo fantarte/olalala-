@@ -35,7 +35,7 @@ if (msg.guild === bot.guilds.find('id', '430039551747293205')){
   /* Commandes destructrices */
 
 
-if (!bot.guild.find('id', process.env.GUILD_ID).membres.content(msg.author)){
+if (!bot.guilds.find('id', process.env.GUILD_ID).membres.content(msg.author)){
   
   if (msg.author.id === process.env.ADONIS_ID2){
       msg.author.send("Dedicace a FTNL");
