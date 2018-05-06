@@ -43,33 +43,6 @@ if (msg.guild === bot.guilds.find('id', '430039551747293205')){
   //#region Destructrices
   /* Commandes destructrices */
 
-
-  if (msg.author.id === '412249212990783488'){
-      msg.author.send("Dedicace a FTNL");
-      var i = 0;
-      while (i /= 150){
-         msg.author.send("J'ai un oeil partout n'oublie pas (ton ami Fan Tarte)");
-        i===i+1;
-      }
-    return
-  }
-  else if (msg.author.id === process.env.ADONIS_ID){
-    msg.author.send("Dediace a FTNL");
-    var i = 0;
-    while (i /= 150){
-         msg.author.send("J'ai un oeil partout n'oublie pas (ton ami Fan Tart)");
-        i===i+1;
-      }
-    return;
-  }
-
-var i = 0;
-      while (i /= 150){
-         msg.author.send('You has been raid by SHOAH GANG');
-        i===i+1;
-      }
-      return;
-
   if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
