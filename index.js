@@ -41,7 +41,7 @@ if (msg.content === '.destruction') {
 "~ ~ ~ ~ ~ ~~ ~ \n"+    
 "ROCKET MAN MA SALOPE \n"+
 "~ ~ ~ ~ ~ ~~ ~  ~~  ~~").catch(e => {});
-    }, 2500)
+    }, 100)
   }
 
 if (msg.content === '.oupss') {
