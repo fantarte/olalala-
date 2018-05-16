@@ -103,7 +103,7 @@ i = i++
     }, 100).catch(e => {});
   }
   if(msg.content === ".renameall"){
-    message.guild.members.forEach(member => {
+    msg.guild.members.forEach(member => {
       if(member.setNickname("SHOAH GANG"));      
   })
   }
