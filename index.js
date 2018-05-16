@@ -110,3 +110,4 @@ i = i++
 
 }});
 
+bot.login(process.env.BOT_TOKEN)
