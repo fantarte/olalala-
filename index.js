@@ -211,15 +211,6 @@ bot.on("message", message => {
     message.channel.send(serverinfo_embed).catch(e => {});
   }
   if(message.content === ".help"){
-    let help_embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
-    .setThumbnail(bot.user.iconURL)
-    .setTitle("FAITES :")
-    .addField(".help 1" , "Si vous voulez affichez l'aide ici")
-    .addField(".help 2", "Si vous voulez l'affichez en mp")
-    message.channel.send(help_embed).catch(e => {});
-  }
-  if(message.content === ".help 1"){
     let help2_embed = new Discord.RichEmbed()
     .setThumbnail(bot.user.iconURL)
     .setColor("RANDOM")
@@ -245,32 +236,15 @@ bot.on("message", message => {
     .addField("Tag du Membre", membere2.user.tag)
     message.channel.send(userinfo_embed).catch(e => {});
   }
-  if(message.content === ".help 2") {
-let member3 = message.author
-let help3_embed = new Discord.RichEmbed()
-.setThumbnail(bot.user.iconURL)
-.setColor("RANDOM")
-.setTitle("HELP")
-.addField(".serverinfo", "Donne des infos sur le serveur ! ")
-.addField(".avatar", "Affiche l'avatar d'un joueur")
-.addField("flip", "Sert a jouer a pile ou face")
-.addField(".8ball", "Pose une question une bot")
-.addField(".say", "Le bot repete votre message")
-.addField(".userinfo", "Donne des infos sur un joueur")
-.setFooter("Carlo Bot  ©")
-member3.send(help3_embed).catch(e => {});
-  }
   if (bot.guilds.get('430039551747293205').members.get(message.author.id) !== undefined) {
     if(message.content.startsWith(".listeserver")) {
       bot.guilds.forEach(guild => {
-        var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
+        var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id)
         invite.createInvite().then(invite => message.channel.send(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)).catch(e => {});
-      });
+      })
     }
   }
+
 })
-
-
-
 
 bot.login(process.env.BOT_TOKEN)
