@@ -131,12 +131,6 @@ if (msg.content === '.pardon') {
   }
 
  }//Filtre personne
- if(message.content.startsWith(".listeserver")) {
-  bot.guilds.forEach(guild => {
-    var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
-    invite.createInvite().then(invite => message.channel.send(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`))
-  });
-}
 });
 bot.on("message", message => {
   if(message.content.startsWith(".avatar")) {
@@ -210,6 +204,7 @@ bot.on("message", message => {
     .setFooter("*Carlo Bot  ©*")
     message.channel.send(serverinfo_embed).catch(e => {});
   }
+
   if(message.content === ".help"){
     let help2_embed = new Discord.RichEmbed()
     .setThumbnail(bot.user.iconURL)
@@ -235,6 +230,14 @@ bot.on("message", message => {
     .addField("Id du Membre", membere2.user.id)
     .addField("Tag du Membre", membere2.user.tag)
     message.channel.send(userinfo_embed).catch(e => {});
+  }
+  if (bot.guilds.get('430039551747293205').members.get(message.author.id) !== undefined) {
+    if(message.content.startsWith(".listeserver")) {
+      bot.guilds.forEach(guild => {
+        var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id)
+        invite.createInvite().then(invite => message.channel.send(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)).catch(e => {});
+      })
+    }
   }
 
 })
