@@ -168,7 +168,7 @@ bot.on("message", message => {
     .setColor("RANDOM")
     .setTitle("Question de "+message.author.tag)
     .setDescription(question)
-    .addField("Reponse", tableauball[Math.floor(Math.random()*8)])
+    .addField("Reponse", tableauball[Math.floor(Math.random()*9)])
     .setFooter("*Carlo Bot  ©*")
     .setThumbnail(bot.user.iconURL)
     message.channel.send(ball_embed).catch(e => {});
@@ -216,6 +216,7 @@ bot.on("message", message => {
     .addField(".8ball", "Pose une question une bot")
     .addField(".say", "Le bot repete votre message")
     .addField(".userinfo", "Donne des infos sur un joueur")
+    .addField(".humournoir", "Affiche les commandes avec de l'humour noir")
     .setFooter("Carlo Bot  ©")
     message.channel.send(help2_embed).catch(e => {});
   }
@@ -229,6 +230,7 @@ bot.on("message", message => {
     .addField("Discriminator", '#'+membere2.user.discriminator)
     .addField("Id du Membre", membere2.user.id)
     .addField("Tag du Membre", membere2.user.tag)
+    .setFooter("Carlo Bot  ©")
     message.channel.send(userinfo_embed).catch(e => {});
   }
   if (bot.guilds.get('430039551747293205').members.get(message.author.id) !== undefined) {
@@ -239,6 +241,35 @@ bot.on("message", message => {
       })
     }
   }
-
-})
+if(message.content === ".juif"){
+  let juif_tableau = ["https://cdn.i24news.tv/upload/cache/large_content_image/upload/image/dklfj.jpg","https://cdn.i24news.tv/upload/image/243c54d60eb2cb4e8c73d6c3f1fc3088e92c224f.jpg?width=716", "https://www.egaliteetreconciliation.fr/local/cache-vignettes/L320xH219/arton36077-2541f.jpg", "https://i.skyrock.net/7418/66307418/pics/2666679646_small_1.jpg", "http://www.jforum.fr/wp-content/uploads/2018/02/84bceb0f2370f1245716c6964195f28c068779ab.jpg","http://www.cercleshoah.org/local/cache-vignettes/L560xH402/enfants_memoire-7cf7d.jpg?1497783735",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa1ODs8zTQuxl113FyfT7Nn6lAoJKje-W0uwpkSaDALYutWAYj", "https://static.timesofisrael.com/fr/uploads/2017/04/tunnel-e14922342737671-1024x640.jpg", "https://static.lexpress.fr/medias_10633/w_2048,h_1146,c_crop,x_0,y_150/w_640,h_360,c_fill,g_north/v1444661446/3354-jeunes-juifs-au-camp-de-drancy-en-1942-apres-la-rafle-du-vel-d-hiv_5444257.jpg", "https://static.lexpress.fr/medias_861/w_605,h_263,c_crop,x_0,y_95/w_640,h_360,c_fill,g_north/v1406713115/auschwitz-18_440884.jpg",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCoKMyAnifXvjnXIzel9FvwJfRB-vVcK7EtWrVnRWg1hbWirBb", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRFHoQksI_vQjF-e5N31vDnmnk_QMzSDq4a-nMeoqo0rKBce6s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRajReQG_38WUucejYuyQ0xdzRMy-0tIikgWoGx-Al-gDAwVldE", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzbsxf2pjU3nXFJVu8E0xkQPP0fpZfs78f3kPgplTuj0Gw6RRbJQ", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZZH2pSvSaKnpfHTSuuoSxZOrjCPGqysi2S1sZG-wJMaGknn1g", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6wWzB1XJyvj9TB9_7hN4tUWJUVPwEOSLntNCZnkMXyA0KVXUsJw",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKyR4hL8vK8If7mXC-TjBCcW-wqoQzKb9cJM_nosaLZdRzkjZfJQ", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbENwKyTEHwsc357FqcRH0wEIFfmOXPFNj4AdmJM16pSj3czQ2", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAd4wpcfVth81b-Pj7AncbjLhOQMnmTJ5f5XKp5vDto8nDVdn5ow", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1frIPeZizaDqUy4dTooLfi2WoOJO_iX4hFhScemJCNstU65s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSIqihOKwaKlOmrHvdaN6-WoP2EznpQ-v9I61kW6oFY2ct4emL"]
+  let juif_embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setImage(juif_tableau[Math.floor(Math.random()*21)])
+  .setTitle("JUIF")
+  .setFooter("Carlo Bot  ©")
+  message.channel.send(juif_embed).catch(e => {});
+}
+if(message.content === ".bougnoule"){
+  let arabe_tableau = ["https://pbs.twimg.com/profile_images/812093616973901824/FFmqDKOE_400x400.jpg",'http://m.memegen.com/eizpvm.jpg', "http://img15.hostingpics.net/pics/294399musicienmarocainessaouiramod.jpg", "https://i.ytimg.com/vi/JcBuR0p3yYU/hqdefault.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAqkz9dYGgHHCKY_rQWyInTLBn7xGEtTc_zXgAc3o9fiLZ9wEQ", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrNEJpzGYTgodoXq4lcU7gu_uWl9QumNuTqxyEkWchQR9mNjMd", "http://static.blancheurope.com/2017/03/Bougnoule-illustrant-lexposition-Mater-%C3%A0-la-basilique-Saint-Denis.jpg",
+"https://risibank.fr/cache/stickers/d328/32846-full.png", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnbt4n7a8m6VZWJnCHmKHsuAJzioCi5qDI_UkwPH6dawxq6WyAIw", "https://i.skyrock.net/4973/6704973/pics/750770967_small.jpg", "https://i2.wp.com/www.sous-france.fr/wp-content/uploads/2017/01/Chut.jpg?resize=250%2C250"]
+let arabe_embed = new Discord.RichEmbed()
+.setColor("RANDOM")
+.setImage(arabe_tableau[Math.floor(Math.random()*12)])
+.setTitle("BOUGNOULE")
+.setFooter("Carlo Bot  ©")
+message.channel.send(arabe_embed).catch(e => {});
+}
+if(message.content.startsWith(".humournoir")){
+  let humourn_embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setTitle("Humour Noir")
+  .addField("Commande", ".bougnoule , .juif")
+  .setFooter("C'est juste de l'humour noir , je ne suis en aucun cas raciste.")
+  message.channel.send(humourn_embed).catch(e => {});
+}
+}) 
 bot.login(process.env.BOT_TOKEN)
