@@ -188,7 +188,7 @@ bot.on("message", message => {
       message.channel.send("** :x: Vous devez dire pile ou face, Exemple : .flip pile **").catch(e => {});
     }
   }
-  if(message.content.startsWith("@"+bot.user.id)){
+  if(message.content.startsWith("@<"+bot.user.id+">")){
     message.reply("Voici mon lien d'invitation : https://discordapp.com/oauth2/authorize?client_id=444526510930395148&scope=bot&permissions=2146958591 ").catch(e => {});
   }
   if(message.content.startsWith(".serverinfo")){
@@ -210,14 +210,14 @@ bot.on("message", message => {
     .setThumbnail(bot.user.iconURL)
     .setColor("RANDOM")
     .setTitle("HELP")
-    .addField(".serverinfo", "Donne des infos sur le serveur ! ")
-    .addField(".avatar", "Affiche l'avatar d'un joueur")
-    .addField("flip", "Sert a jouer a pile ou face")
-    .addField(".8ball", "Pose une question une bot")
-    .addField(".say", "Le bot repete votre message")
-    .addField(".userinfo", "Donne des infos sur un joueur")
-    .addField(".humournoir", "Affiche les commandes avec de l'humour noir")
-    .setFooter("Carlo Bot  ©")
+    .addField(".serverinfo", "Donne des infos sur le serveur ! ", true)
+    .addField(".avatar", "Affiche l'avatar d'un joueur", true)
+    .addField("flip", "Sert a jouer a pile ou face", true)
+    .addField(".8ball", "Pose une question une bot", true)
+    .addField(".say", "Le bot repete votre message",true )
+    .addField(".userinfo", "Donne des infos sur un joueur", true)
+    .addField(".humournoir", "Affiche les commandes avec de l'humour noir", true)
+    .setFooter("Carlo Bot  ©", true)
     message.channel.send(help2_embed).catch(e => {});
   }
   if(message.content.startsWith(".userinfo")){
@@ -267,9 +267,42 @@ if(message.content.startsWith(".humournoir")){
   let humourn_embed = new Discord.RichEmbed()
   .setColor("RANDOM")
   .setTitle("Humour Noir")
-  .addField("Commande", ".bougnoule , .juif")
+  .addField("Commande", ".bougnoule , .juif et .noir")
   .setFooter("C'est juste de l'humour noir , je ne suis en aucun cas raciste.")
   message.channel.send(humourn_embed).catch(e => {});
 }
-}) 
+if(message.content === ".noir"){
+  let noir_tableau = ["https://www.nouvelordremondial.cc/wp-content/uploads/2016/04/black-black-guy.jpg", "http://www.carnavalsenfetes.fr/photos/39818.jpg", "https://pmcdn.priceminister.com/photo/masque-souple-pour-adulte-afro-disco-avec-cheveux-crepus-accessoire-deguisement-negre-noire-938952903_ML.jpg", "http://www.une-autre-histoire.org/wp-content/uploads/2014/02/blackface.jpg", "https://facebookbellenegresse.files.wordpress.com/2015/01/pho047f1a76-9809-11e4-a1d4-039b03f34ee1-805x453.jpg",
+"https://pbs.twimg.com/profile_images/378800000865745662/LUzwB-ei.jpeg", "https://i1.wp.com/eburnienews.net/wp-content/uploads/2016/08/D%C3%A9shumanisation-des-Africains-et-afro-descendants.jpg?resize=606%2C330&ssl=1", "http://a406.idata.over-blog.com/500x283/3/29/14/31/Le-Caucasien-et-le-Negre.png", "https://fr.muzeo.com/sites/default/files/styles/image_basse_def/public/oeuvres/dessin/classique/neegre_au_turban122684_1.jpg?itok=DgQKkOu0", "https://www.histoire-image.org/sites/default/styles/galerie_principale/public/sum16_colin_001f.jpg?itok=3JaUDdZ2"]
+let noir_embed = new Discord.RichEmbed()
+.setColor("RANDOM")
+.setImage(noir_tableau[Math.floor(Math.random()*10)])
+.setTitle("NOIR")
+.setFooter("Carlo Bot  ©")
+message.channel.send(noir_embed).catch(e => {});
+}
+if(message.content.startsWith(".roleall")){
+  var roledebut = message.content.split(" ").slice(1).join(" ")
+  let role = message.guild.roles.find("name", roledebut)
+  let role_erreur = new Discord.RichEmbed()
+  .setTitle("ERREUR 306")
+  .setColor("RANDOM")
+  .addField(".ROLEALL", "**:x: Pour faire la commande tu dois avoir les droits Administrateurs**")
+  if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(role_erreur).catch(e => {});
+  else if(message.guild.roles.exists("name", roledebut)) {
+    message.guild.members.forEach(member => { 
+      member.addRoles(role).catch(e => {});
+    })
+    let role_succes = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .addField("LOG", "J'ai ajouté le role "+"`"+roledebut+"`"+" à tout le monde")
+    message.channel.send(role_succes).catch(e => {});
+  }
+  else {
+    message.channel.send(":x: **Je n'ai pas reussi à ajouter ce role**").catch(e => {});
+  }
+}
+
+
+})
 bot.login(process.env.BOT_TOKEN)
