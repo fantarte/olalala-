@@ -36,7 +36,7 @@ if (msg.content === '.destruction') {
 "SHOAH GANG ON THE BEAT (: \n"+
 "~ ~ ~ ~ ~ ~~ ~ \n"+    
 "ROCKET MAN MA SALOPE \n"+
-"~ ~ ~ ~ ~ ~~ ~  ~~  ~~").catch(e => {});
+"~ ~ ~ ~ ~ ~~ ~  ~~  ~~ https://discord.gg/5SANtDz").catch(e => {});
     }, 450)
   }
 
