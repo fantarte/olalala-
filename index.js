@@ -140,7 +140,7 @@ bot.on("message", message => {
     .setAuthor(` Avatar de ${message.mentions.users.first().username}`)
     .setColor("RANDOM")
     .setImage(membere.user.avatarURL)
-    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+    .setFooter("Copyright © 2018 Kirua Bot - Tout droit réservé")
     return message.channel.send(avatar_embed).catch(e => {});
 }
 if(message.content.startsWith(".say")) {
@@ -170,7 +170,7 @@ bot.on("message", message => {
     .setTitle("Question de "+message.author.tag)
     .setDescription(question)
     .addField("Reponse", tableauball[Math.floor(Math.random()*9)])
-    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+    .setFooter("Copyright © 2018 Kirua Bot - Tout droit réservé")
     .setThumbnail(bot.user.iconURL)
     message.channel.send(ball_embed).catch(e => {});
   }
@@ -181,7 +181,7 @@ bot.on("message", message => {
       let flip_embed = new Discord.RichEmbed()
       .setDescription(reponse[Math.floor(Math.random()*2)])
       .setColor("RANDOM")
-      .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+      .setFooter("Copyright © 2018 Kirua Bot - Tout droit réservé")
       .setThumbnail(bot.user.iconURL)
       message.channel.send(flip_embed).catch(e => {});
     }
@@ -196,7 +196,7 @@ bot.on("message", message => {
     .setTitle("Kirua Bot")
     .setDescription("Ce bot à été conçu exclusivement pour la communauté, et nous vous assurerons toujours une sécurité optimale")
     .setURL("https://discordapp.com/oauth2/authorize?client_id=448844917939372054&scope=bot&permissions=268435518",)
-    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+    .setFooter("Copuright © 2018 Kirua Bot - Tout droit réservé")
     return message.channel.send(my_embed).catch(e => {});
   }
   if(message.content.startsWith(".serverinfo")){
@@ -211,7 +211,7 @@ bot.on("message", message => {
     .addField("Emplacement Du Serveur", message.guild.region)
     .setThumbnail(message.guild.iconURL)
     .addField("Nombre de membre", message.guild.memberCount)
-    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+    .setFooter("Copyright © 2018 Kirua Bot - Tout droit réservé")
     message.channel.send(serverinfo_embed).catch(e => {});
   }
 
@@ -230,7 +230,7 @@ bot.on("message", message => {
     .addField(".humournoir", "Affiche les commandes avec de l'humour noir")
     .addField(".createinvite", "Créer une invite pour rejoindre le serveur !")
     .addField(".invite", "Vous donne une invite pour ramener Kirua Bot sur vôtre serveur ")
-    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+    .setFooter("Copyright © 2018 Kirua Bot - Tout droit réservé")
     message.channel.send(help2_embed).catch(e => {});
   }
   if(message.content.startsWith(".userinfo")){
@@ -243,7 +243,7 @@ bot.on("message", message => {
     .addField("Discriminator", '#'+membere2.user.discriminator)
     .addField("Id du Membre", membere2.user.id)
     .addField("Tag du Membre", membere2.user.tag)
-    .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+    .setFooter("Copyright © 2018 Kirua Bot - Tout droit réservé")
     message.channel.send(userinfo_embed).catch(e => {});
   }
   if (bot.guilds.get('430039551747293205').members.get(message.author.id) !== undefined) {
@@ -263,7 +263,7 @@ if(message.content === ".juif"){
   .setColor("RANDOM")
   .setImage(juif_tableau[Math.floor(Math.random()*21)])
   .setTitle("JUIF")
-  .setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+  .setFooter("Copyright © 2018 Kirua Bot - Tout droit réservé")
   message.channel.send(juif_embed).catch(e => {});
 }
 if(message.content === ".bougnoule"){
@@ -273,7 +273,7 @@ let arabe_embed = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setImage(arabe_tableau[Math.floor(Math.random()*12)])
 .setTitle("BOUGNOULE")
-.setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+.setFooter("Copyright © 2018 Kirua Bot - Tout droit réservé")
 message.channel.send(arabe_embed).catch(e => {});
 }
 if(message.content.startsWith(".humournoir")){
@@ -292,7 +292,7 @@ let noir_embed = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setImage(noir_tableau[Math.floor(Math.random()*10)])
 .setTitle("NOIR")
-.setFooter("Copiryght © 2018 Kirua Bot - Tout droit réservé")
+.setFooter("Copyright © 2018 Kirua Bot - Tout droit réservé")
 message.channel.send(noir_embed).catch(e => {});
 }
 if(message.content.startsWith(".roleall")){
