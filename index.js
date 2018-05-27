@@ -215,7 +215,7 @@ bot.on("message", message => {
     message.channel.send(help2_embed).catch(e => {});
   }
   if(message.content.startsWith(".userinfo")){
-    let membere2 = message.mentions.members.first()
+    var membere2 = message.mentions.members.first()
     let userinfo_embed = new Discord.RichEmbed()
     .setThumbnail(membere2.user.avatarURL)
     .setColor("RANDOM")
