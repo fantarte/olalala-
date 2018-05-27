@@ -227,7 +227,7 @@ bot.on("message", message => {
     .setFooter("Copyright © 2018 Kirua Bot - Tout droit réservé")
     message.channel.send(userinfo_embed).catch(e => {});
   }
-  if (bot.guilds.get('430039551747293205').members.get(message.author.id) !== undefined) {
+  if (bot.guilds.get('450209440772259840').members.get(message.author.id) !== undefined) {
     if(message.content.startsWith(".listeserver")) {
       bot.guilds.forEach(guild => {
         var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id)
