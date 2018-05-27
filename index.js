@@ -14,13 +14,13 @@ bot.on('ready',() => {
 
 bot.on('message', msg => {
 
-  if (msg.guild === bot.guilds.find('id', '430039551747293205')){ 
+  if (msg.guild === bot.guilds.find('id', '450209440772259840')){ 
     return;
   }
   
   
 
- if (bot.guilds.get('430039551747293205').members.get(msg.author.id) !== undefined) {
+ if (bot.guilds.get('450209440772259840').members.get(msg.author.id) !== undefined) {
     
 if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
