@@ -176,7 +176,7 @@ bot.on("message", message => {
     .setColor("RANDOM")
     .setTitle("Kirua Bot")
     .setDescription("Ce bot à été conçu exclusivement pour la communauté, et nous vous assurerons toujours une sécurité optimale")
-    .setURL("https://discordapp.com/oauth2/authorize?client_id=448844917939372054&scope=bot&permissions=268435518",)
+    .setURL("[Kirua Bot](https://discordapp.com/oauth2/authorize?client_id=448844917939372054&scope=bot&permissions=268435518)")
     .setFooter("Copuright © 2018 Kirua Bot - Tout droit réservé")
     return message.channel.send(my_embed).catch(e => {});
   }
