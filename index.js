@@ -325,7 +325,7 @@ bot.on("message", message =>{
     if(message.content.startsWith(".test")){
         var adhan = require("adhan")
         var date = new Date();
-        var coordinates = new adhan.Coordinates(35.78056, -78.6389);
+        var coordinates = new adhan.Coordinates(48.866667, 2.333333);
         var params = adhan.CalculationMethod.MuslimWorldLeague();
         params.madhab = adhan.Madhab.Hanafi;
         var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
