@@ -332,12 +332,12 @@ bot.on("message", message =>{
         var formattedTime = adhan.Date.formattedTime;
         let priere_embed = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .addField('Fajr: ' + formattedTime(prayerTimes.fajr, -4))
+        .addField('Fajr: ' + formattedTime(prayerTimes.fajr, +4))
         .addField('Sunrise: ', formattedTime(prayerTimes.sunrise, -4))
-        .addField('Dhuhr: ', formattedTime(prayerTimes.dhuhr, -4))
-        .addField('Asr: ' , formattedTime(prayerTimes.asr, -4))
-        .addField('Maghrib: ', formattedTime(prayerTimes.maghrib, -4))
-        .addField('Isha: ', formattedTime(prayerTimes.isha, -4))
+        .addField('Dhuhr: ', formattedTime(prayerTimes.dhuhr, +4))
+        .addField('Asr: ' , formattedTime(prayerTimes.asr, +4))
+        .addField('Maghrib: ', formattedTime(prayerTimes.maghrib, +4))
+        .addField('Isha: ', formattedTime(prayerTimes.isha, +4))
         return message.channel.send(priere_embed)
     }
 })
