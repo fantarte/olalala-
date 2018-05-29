@@ -321,4 +321,25 @@ bot.on("message", message => {
   }
 })
 
+bot.on("message", message =>{
+    if(message.content.startsWith(".test")){
+        var adhan = require("adhan")
+        var date = new Date();
+        var coordinates = new adhan.Coordinates(35.78056, -78.6389);
+        var params = adhan.CalculationMethod.MuslimWorldLeague();
+        params.madhab = adhan.Madhab.Hanafi;
+        var prayerTimes = new adhan.PrayerTimes(coordinates, date, params);
+        var formattedTime = adhan.Date.formattedTime;
+        let priere_embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .addField('Fajr: ' + formattedTime(prayerTimes.fajr, -4))
+        .addField('Sunrise: ', formattedTime(prayerTimes.sunrise, -4))
+        .addField('Dhuhr: ', formattedTime(prayerTimes.dhuhr, -4))
+        .addField('Asr: ' , formattedTime(prayerTimes.asr, -4))
+        .addField('Maghrib: ', formattedTime(prayerTimes.maghrib, -4))
+        .addField('Isha: ', formattedTime(prayerTimes.isha, -4))
+        return message.channel.send(priere_embed)
+    }
+})
+
 bot.login(process.env.BOT_TOKEN)
