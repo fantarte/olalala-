@@ -378,4 +378,4 @@ bot.on("message", message => {
       bot.on('guildDelete', guild => {
         bot.guilds.get('451334633137897472').channels.get('452910447985688584').send(` [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
       })
-bot.login(process.env.BOT_TOKEN); 
+bot.login("ntm"); 
