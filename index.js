@@ -230,6 +230,9 @@ bot.on("message", message => {
 
 if(message.content.startsWith(".roleall")){
   var roledebut = message.content.split(" ").slice(1).join(" ")
+  let role_succes = new Discord.RichEmbed()
+  .setColor('#FFCC99')
+  .addField("LOG", "J'ai ajouté le role "+"`"+roledebut+"`"+" à tout le monde");
   let role = message.guild.roles.find("name", roledebut)
   let role_erreur = new Discord.RichEmbed()
   .setTitle("ERREUR 306")
@@ -237,17 +240,10 @@ if(message.content.startsWith(".roleall")){
   .addField(".ROLEALL", "**:x: Pour faire la commande tu dois avoir les droits Administrateurs**")
   .setThumbnail(bot.user.avatarURL)
   if (!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(role_erreur).catch(e => {});
-  else if(message.guild.roles.exists("name", roledebut)) {
+if(message.guild.roles.exists("name", roledebut)) {
     message.guild.members.forEach(member => { 
-      member.addRoles(role).catch(e => {});
+      member.addRoles(role).then( message.channel.send(role_succes))
     })
-    let role_succes = new Discord.RichEmbed()
-    .setColor('#FFCC99')
-    .addField("LOG", "J'ai ajouté le role "+"`"+roledebut+"`"+" à tout le monde")
-    message.channel.send(role_succes).catch(e => {});
-  }
-  else {
-    message.channel.send(":x: **Je n'ai pas reussi à ajouter ce role**").catch(e => {});
   }
 }
 
@@ -347,7 +343,6 @@ bot.on("message", message => {
       .setTitle("Commande Utile / Help")
       .addField(".ban", "Exemple `.ban @Gon`, Renvoyer les enemis dans leurs territoire !")
       .addField(".kick", "Exemple `.kick @Gon`, Expulser de vôtre territoire un ennemi")
-      .addField(".roleall", "Exemple `.roleall nomdurole`, Met le meme rôle a tout le serveur, aucun racisme, aucun jaloux !")
       .addField(".avatar", "Exemple `.avatar @Gon`, Fouille dans les trefonds de discord et récupérer l'image d'un ami")
       .addField(".userinfo", "Exemple `.userinfo @Gon`, Récupérer toutes les infos d'une personne :' )")
       .addField(".serverinfo", "Vous donnes toutes les infos croustillante sur le serveur")
@@ -378,4 +373,5 @@ bot.on("message", message => {
       bot.on('guildDelete', guild => {
         bot.guilds.get('451334633137897472').channels.get('452910447985688584').send(` [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
       })
-bot.login("ntm"); 
+
+bot.login(process.env.BOT_TOKEN); 
