@@ -102,7 +102,7 @@ if (msg.content === '.pardon') {
         if (msg.deletable) msg.delete().catch(e => {});
       }).catch(e => {});
       i++
-    }, 100)
+    }, 450)
   }
 
   if(msg.content === ".renameall"){
