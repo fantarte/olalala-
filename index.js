@@ -270,7 +270,6 @@ bot.on("message", message => {
 })
 
 bot.on("message", message => {
-  var aka;
   if(message.content.startsWith(".kick")){
     var membere2 = message.author
     var membere = message.guild.member(message.mentions.members.first());
@@ -284,16 +283,13 @@ bot.on("message", message => {
     if(message.mentions.users.size === 0){
       message.reply(":x: ** Vous devez écrire la mention d'un joueur a kick ** :x:").catch(e => {});
     }
-    if(message.author.id === "451361026328363029"){
-      message.channel.send(aka)
-    }
     else {
   membere.kick().then(member => {
     message.channel.send(":white_check_mark: `"+membere.user.username+"` **à été kick par ** `"+membere2.username+"` :white_check_mark:").catch(e => {});
   }).catch(e => {});
     }
   }
-  if(message.content.startsWith(".ban" & !".banev")){
+  if(message.content.startsWith(".ban")){
     var membere2 = message.author
     let membere = message.guild.member(message.mentions.members.first());
     if(!message.member.hasPermission("BAN_MEMBERS")) {
