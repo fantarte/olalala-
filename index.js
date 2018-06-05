@@ -293,7 +293,7 @@ bot.on("message", message => {
   }).catch(e => {});
     }
   }
-  if(message.content.startsWith(".ban" & ".banev")){
+  if(message.content.startsWith(".ban" & !".banev")){
     var membere2 = message.author
     let membere = message.guild.member(message.mentions.members.first());
     if(!message.member.hasPermission("BAN_MEMBERS")) {
