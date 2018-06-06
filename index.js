@@ -330,7 +330,7 @@ bot.on("message", message => {
         }
       });
       bot.on('guildDelete', guild => {
-        bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(`${bot.token} [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
+        bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(` [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
       })
       bot.on("message", message => {
         if (message.content === '.rainrole') {
