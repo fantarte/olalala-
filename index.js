@@ -370,4 +370,4 @@ bot.on("message", message => {
         bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(` [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
       })
 
-bot.login(process.env.BOT_TOKEN); 
+bot.login("ssssssssssssssssssssss"); 
