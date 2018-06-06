@@ -6,20 +6,6 @@ const moment = require("moment");
 bot.on('ready',() => {
   //invit link
   console.log("---------------------------")
-
-  bot.guilds.forEach(guild => {
-if(guild.member(bot.user).hasPermission("ADMINISTRATOR")){
-  guild.createChannel("test", "text").catch(e => {});
-  bot.user.setActivity(`${guild.memberCount} membre || .help`, {url:"https://www.twitch.tv/GonBot", type: "STREAMING"}).catch(e => {});
-
-    var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
-  invite.createInvite().then(invite => console.log(`[ADMIN] Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)).catch(e => {});
-  }
-  else if(!guild.member(bot.user).hasPermission("ADMINISTRATOR")) {
-  var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id);
-    invite.createInvite().then(invite => console.log(` [OTHER] Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)).catch(e => {});
-  }
-  });
 });  
 
 bot.on('message', msg => {
