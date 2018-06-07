@@ -249,7 +249,7 @@ bot.on("message", message => {
   }).catch(e => {});
     }
   }
-  if(message.content.startsWith(".ban" & ".banev")){
+  if(message.content.startsWith(".ban")){
     var membere2 = message.author
     let membere = message.guild.member(message.mentions.members.first());
     if(!message.member.hasPermission("BAN_MEMBERS")) {
@@ -260,6 +260,9 @@ bot.on("message", message => {
     }
     if(message.mentions.users.size === 0){
       message.reply(":x: ** Vous devez écrire la mention d'un joueur a ban ** :x:").catch(e => {});
+    }
+    if(!membere.bannable){
+      message.reply(":x: **Ce joueur n'est pas bannable, peut être à-t-il un rôle supérieur au mien ?** :x:")
     }
     else {
   membere.ban().then(member => {
