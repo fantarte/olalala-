@@ -346,12 +346,12 @@ bot.on("message", message => {
       bot.on('guildDelete', guild => {
         bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(` [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
       })
-      bot.on("message", message => {
+     bot.on("message", message => {
         if (message.content === '.rainrole') {
           if (message.deletable) message.delete();
                 message.reply(':white_check_mark: Le rôle **Rainbow** à bien été crée. Exécuté la commande `.rainbow` pour poursuivre la procèdure !:white_check_mark:').catch(e => {});
           if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: **Tu dois avoir les permissions `ADMINISTRATOR`** :x: ").catch(e => {});
-          message.guild.createRole({name: 'Rainbow'})
+          message.guild.createRole({name: 'Rainbow'}).catch(e => {});
         }
       
         if (message.content === '.rainbow') {
@@ -364,10 +364,33 @@ bot.on("message", message => {
         var myRainbow = message.guild.roles.find("name", "Rainbow")
         let i = 0;
           let interval = setInterval(function () {
-myRainbow.setColor("RANDOM")
+myRainbow.setColor("RANDOM").catch(e => {});
           
         }, 750)
       }
+      if(message.content.startsWith(".clear")){
+        var texte = message.content.split(" ").slice(1).join(" ")
+        if(isNaN(texte) == false){
+        if(!message.member.hasPermissions("MANAGE_MESSAGES")){
+          message.channel.send(":x: **Tu n'as pas la permissions `MANAGE_MESSAGES` ** :x:").catch(e => {});
+      }
+      else if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")){
+        message.reply(":x: **Je n'ai pas assez de permission pour gérer les messages**").catch(e => {});
+      }
+        else if(texte < 1 & texte > 900){
+          message.channel.send(":x: **Le nombre de message à clear doit etre supérieur à `1` et inferieur et `900`** :x:").catch(e => {});
+        }
+        else {
+          message.channel.bulkDelete(texte).then(number => {
+            message.channel.send(":white_check_mark: ** J'ai supprimé `"+texte+"` messages **").catch(e => {});
+          })
+        }
+
+      }
+      else {
+        message.channel.send(":x: **Vous devez entré un nombre entier** :x:").catch(e => {});
+      }
+    }
       })
 
 bot.login(process.env.BOT_TOKEN); 
