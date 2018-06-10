@@ -1,3 +1,25 @@
+const Discord = require('discord.js');
+const bot = new Discord.Client();
+const fs = require('fs');
+const moment = require("moment");
+ var prefix = "."
+bot.on('ready',() => {
+  //invit link
+  console.log("---------------------------")
+});  
+
+bot.on('message', message => {
+ 
+  const mute = require("./commands/moderation/mute.js");
+  const unmute = require("./commands/moderation/unmute.js");
+  
+  mute(message, prefix , bot)
+  unmute(message, prefix , bot)
+  
+  
+  });
+
+
 bot.on('message', msg => {
   if (msg.guild === bot.guilds.find('id', '453631449804046336')){ 
     return;
