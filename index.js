@@ -3,6 +3,7 @@ const bot = new Discord.Client();
 const fs = require('fs');
 const moment = require("moment");
  var prefix = "."
+  var perms = ["ADMINISTRATOR", "MANAGE_CHANNELS"]
 bot.on('ready',() => {
   //invit link
   console.log("---------------------------")
