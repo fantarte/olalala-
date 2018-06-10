@@ -358,6 +358,9 @@ myRainbow.setColor("RANDOM").catch(e => {});
       else if(!message.guild.member(bot.user).hasPermission("MANAGE_MESSAGES")){
         message.reply(":x: **Je n'ai pas assez de permission pour gérer les messages**").catch(e => {});
       }
+      else if(!texte){
+        message.channel.send(":x: **Tu dois écrire un nombre de message à supprimé** :x:")
+      }
         else if(texte < 1 & texte > 900){
           message.channel.send(":x: **Le nombre de message à clear doit etre supérieur à `1` et inferieur et `900`** :x:").catch(e => {});
         }
