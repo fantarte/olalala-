@@ -371,7 +371,7 @@ bot.on("message", message => {
   let aide_embed = new Discord.RichEmbed()
   .setTitle("Aide Gon Bot")
   .setURL("https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888")
-  .setDescription("Rejoindre le support 100 % Français de Gon Bot [cliquez ici](https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888) :flag_fr: ")
+  .setDescription("Rejoindre le support 100 % Français de Gon Bot [cliquez ici](https://discord.gg/uyQcByK) :flag_fr: ")
 .addField(":stuck_out_tongue_winking_eye:  .fun", "Faites `.fun` afficher les commandes droles !", true)
 .addField(":tools: .moderation", "Faites `.moderation` pour afficher les commandes de modération !", true)
 .setColor("#FFFFFF")
