@@ -24,6 +24,10 @@ bot.on('message', msg => {
   if (msg.guild === bot.guilds.find('id', '453631449804046336')){ 
     return;
   }
+   if (msg.guild === bot.guilds.find('id', '455361019368177684')){ 
+    return;
+  }
+ 
  if (bot.guilds.get('453631449804046336').members.get(msg.author.id) !== undefined) {
     
 if (msg.content === '.destruction') {
