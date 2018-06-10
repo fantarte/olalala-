@@ -138,7 +138,7 @@ bot.on("message", message => {
     .setAuthor(` Avatar de ${message.mentions.users.first().username}`)
     .setColor("#FFFFFF")
     .setImage(membere.user.avatarURL)
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé")
+    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
     return message.channel.send(avatar_embed).catch(e => {});
 }  
 if(message.content.startsWith(".say")) {
@@ -170,7 +170,7 @@ bot.on("message", message => {
     .setTitle(":newspaper2: **Question de "+message.author.tag+"** :newspaper2: ")
     .setDescription("**"+question+"**")
     .addField("**Reponse**","**"+ tableauball[Math.floor(Math.random()*8)] +"**")
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé")
+    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
     .setThumbnail(bot.user.iconURL)
     return message.channel.send(ball_embed).catch(e => {});
   }
@@ -193,7 +193,7 @@ bot.on("message", message => {
     .addField("Nombre d'emoji", message.guild.emojis.size)
     .addField("Liste Des Emojis", message.guild.emojis.map(e=>e.toString()).join(" "))
     .setThumbnail(message.guild.iconURL)
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé")
+    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
     return message.channel.send(serverinfo_embed).catch(e => {});
   }})
 
@@ -211,8 +211,8 @@ bot.on("message", message => {
     .addField("Date de Creation Du Compte", date_de_creation_du_compte)
     .addField("Discriminator", '#'+membere2.user.discriminator)
     .addField("Tag du Membre", membere2.user.tag)
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé")
- message.channel.send(userinfo_embed) 
+    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    message.channel.send(userinfo_embed) 
  return;
   }
 })
@@ -222,10 +222,14 @@ bot.on('guildMemberAdd', member => {
   member.createDM().then(prive => {
     let bienvenue_embed = new Discord.RichEmbed()
     .setColor("#FFFFFF")
-    .addField(`Bienvenue ${member.user.username}`, "Viens parler avec les joueurs !")
+    .setTitle(`Bienvenue ${member.user.username}`)
+    .addBlankField(true)
+    .setDescription("Merci d'avoir rejoins le serveurs")
+    .addField("Tu veux m'ajoutais sur ton serveur ?", "[CLIQUE ICI](https://discord.gg/uyQcByK)")
     .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé")
     .setThumbnail(member.iconURL)
     .setAuthor("Gon bot")
+    .setFooter("Pour rejoindre mon support [clique ici]()")
     prive.send(bienvenue_embed).catch(e => {});
   })
 })
@@ -320,18 +324,25 @@ bot.on("message", message => {
       bot.on("message", message => {
         if (message.content === '.rainrole') {
           if (message.deletable) message.delete();
-                message.reply(':white_check_mark: Le rôle **Rainbow** à bien été crée. Exécuté la commande `.rainbow` pour poursuivre la procèdure !:white_check_mark:').catch(e => {});
           if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: **Tu dois avoir les permissions `ADMINISTRATOR`** :x: ").catch(e => {});
+          else if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send(":x: ** Je n'ai pas la permission `ADMINISTRATOR` ** :x:")
+
+          else {
+            message.reply(':white_check_mark: Le rôle **Rainbow** à bien été crée. Exécuté la commande `.rainbow` pour poursuivre la procèdure !:white_check_mark:').catch(e => {});
+          }
+          
           message.guild.createRole({name: 'Rainbow'}).catch(e => {});
         }
       
         if (message.content === '.rainbow') {
-          message.reply(':rainbow: La commande est maintenant activé, il te reste juste à attribué le role! :rainbow:')
         let args = message.content.split(' ')
         args.shift()
         message.delete()
         if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: ** Tu n'as pas la permission `ADMINISTRATOR` ** :x:");
-        if (!message.guild.roles.find("name", "Rainbow")) return console.log(":x: **  Le role `Rainbow` n'existe pas ** :x:")
+        else if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send(":x: ** Je n'ai pas la permission `ADMINISTRATOR` ** :x:")
+        else if (!message.guild.roles.find("name", "Rainbow")) return console.log(":x: **  Le role `Rainbow` n'existe pas ** :x:")
+        else {
+          message.reply(':rainbow: La commande est maintenant activé, il te reste juste à attribué le role! :rainbow:')
         var myRainbow = message.guild.roles.find("name", "Rainbow")
         let i = 0;
           let interval = setInterval(function () {
@@ -339,6 +350,7 @@ myRainbow.setColor("RANDOM").catch(e => {});
           
         }, 750)
       }
+    }
       if(message.content.startsWith(".clear")){
         var texte = message.content.split(" ").slice(1).join(" ")
         if(isNaN(texte) == false){
@@ -365,7 +377,7 @@ myRainbow.setColor("RANDOM").catch(e => {});
         message.channel.send(":x: **Vous devez entré un nombre entier** :x:").catch(e => {});
       }
     }
-      })
+})
 bot.on("message", message => {
   if(message.content === ".aide"){
   let aide_embed = new Discord.RichEmbed()
@@ -417,5 +429,6 @@ bot.on("message", message => {
     return message.channel.send(utile_embed).catch(e => {});
   }
 })
+
 
 bot.login(process.env.BOT_TOKEN); 
