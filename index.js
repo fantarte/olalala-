@@ -366,5 +366,56 @@ myRainbow.setColor("RANDOM").catch(e => {});
       }
     }
       })
+bot.on("message", message => {
+  if(message.content === ".aide"){
+  let aide_embed = new Discord.RichEmbed()
+  .setTitle("Aide Gon Bot")
+  .setURL("https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888")
+  .setDescription("Rejoindre le support 100 % Français de Gon Bot [cliquez ici](https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888) :flag_fr: ")
+.addField(":stuck_out_tongue_winking_eye:  .fun", "Faites `.fun` afficher les commandes droles !", true)
+.addField(":tools: .moderation", "Faites `.moderation` pour afficher les commandes de modération !", true)
+.setColor("#FFFFFF")
+.addField(":electric_plug:  .utile", "Faites `.utile` pour afficher les commandes utiles", true)
+  .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+  return message.channel.send(aide_embed)
+  }
+  if(message.content === ".fun"){
+    let fun_embed = new Discord.RichEmbed()
+    .setTitle("FUN :stuck_out_tongue_winking_eye:")
+    .addField(".rainrole", "Créer le role multicolore !!!! :gay_pride_flag: ", true)
+    .addField(".rainbow", "Active le changement de couleur du role Rainbow ! :gay_pride_flag: ", true)
+    .addField(".say","Fais dire une phrase au Gon Bot", true)
+    .addField(".flip", "Jouez au pile ou face avec le bot", true)
+    .addField(".8ball", "Posez une question au bot", true)
+    .addField(".c", "Le bot vous revele vôtre vraie identitée...", true)
+    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setColor("#FFFFFF")
+
+    return message.channel.send(fun_embed).catch(e => {});
+  }
+  if(message.content === ".moderation"){
+    let moderation_embed = new Discord.RichEmbed()
+    .setTitle(":tools: .moderation", true)
+    .addField(".kick", "Kick un membre", true)
+    .addField(".ban", "Ban un membre", true)
+    .addField(".clear", "Supprime un certains nombre de message", true)
+    .addField(".mute", "Enleve la permission d'écrire a un membre dans le salon", true)
+    .addField(".unmute","Redonne la permission au membre de parler dans le salon", true)
+    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setColor("#FFFFFF")
+    return message.channel.send(moderation_embed).catch(e => {});
+  }
+  if(message.content === ".utile"){
+    let utile_embed = new Discord.RichEmbed()
+    .setTitle(":electric_plug:  .utile")
+    .addField(".serverinfo", "Affiche des infos sur le serveur")
+    .addField(".userinfo", "Affiche des infos sur une personne")
+    .addField(".avatar", "Affiche l'avatar d'une personne")
+    .addField(".createinvite", "Vous donnes une invit pour rejoindre le serveur")
+    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setColor("#FFFFFF")
+    return message.channel.send(utile_embed).catch(e => {});
+  }
+})
 
 bot.login(process.env.BOT_TOKEN); 
