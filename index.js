@@ -223,13 +223,12 @@ bot.on('guildMemberAdd', member => {
     let bienvenue_embed = new Discord.RichEmbed()
     .setColor("#FFFFFF")
     .setTitle(`Bienvenue ${member.user.username}`)
-    .addBlankField(true)
     .setDescription("Merci d'avoir rejoins le serveurs")
-    .addField("Tu veux m'ajoutais sur ton serveur ?", "[CLIQUE ICI](https://discord.gg/uyQcByK)")
+    .addField("Tu veux m'ajoutais sur ton serveur ?", "[CLIQUE ICI](https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888)")
     .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé")
     .setThumbnail(member.iconURL)
     .setAuthor("Gon bot")
-    .setFooter("Pour rejoindre mon support [clique ici]()")
+    .setFooter("Pour rejoindre mon support [clique ici](https://discord.gg/uyQcByK)")
     prive.send(bienvenue_embed).catch(e => {});
   })
 })
@@ -410,6 +409,7 @@ bot.on("message", message => {
     .setTitle(":tools: .moderation", true)
     .addField(".kick", "Kick un membre", true)
     .addField(".ban", "Ban un membre", true)
+    .addField(".unbanid", "Deban un membre via son id", true)
     .addField(".clear", "Supprime un certains nombre de message", true)
     .addField(".mute", "Enleve la permission d'écrire a un membre dans le salon", true)
     .addField(".unmute","Redonne la permission au membre de parler dans le salon", true)
@@ -429,6 +429,44 @@ bot.on("message", message => {
     return message.channel.send(utile_embed).catch(e => {});
   }
 })
+
+bot.on("message", message => {
+  if(message.content.startsWith(".hackban")){
+    var args = message.content.split(" ").slice(1)
+  if (!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")) {
+    return message.channel.send(":x: **Je n'ai pas la permission `BAN_MEMBERS` ** :x:").catch(e => {});
+  } 
+
+if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(":x: **Tu n'as pas la permission** `BAN_MEMBERS`").catch(e => {});
+
+  var reason = args.join(" ") || "none";
+
+message.guild.ban(args[0], reason).then(user => {
+    message.channel.send(`:white_check_mark: **${user}** **à été hackban par** ${message.author.username}`).catch(e => {});
+})
+   if (!args[0]) {
+        return message.channel.send(":x: **Tu dois envoyer l'id d'un membre a hackban** :x:").catch(e => {});
+      }
+    }
+})
+
+bot.on("message", message => {
+  if(message.content.startsWith(".unbanid")){
+    var args = message.content.split(" ").slice(1)
+    if (!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")) {
+      return message.channel.send(":x: **Je n'ai pas la permission `BAN_MEMBERS` ** :x:").catch(e => {});
+    }
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(":x: **Tu n'as pas la permission** `BAN_MEMBERS`").catch(e => {});
+    var reason = args.join(" ") || "none";
+    message.guild.unban(args[0], reason).then(user => {
+      message.channel.send(`:white_check_mark: **${user}** **à été unbanid par** ${message.author.username}`).catch(e => {});
+    })
+    if(!args[0]){
+      return message.channel.send(":x: **Tu dois envoyer l'id d'un membre a unbanid ** :x:").catch(e => {});
+    }
+  }
+})
+
 
 
 bot.login(process.env.BOT_TOKEN); 
