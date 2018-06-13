@@ -259,12 +259,12 @@ bot.on('guildMemberAdd', member => {
   member.createDM().then(prive => {
     let bienvenue_embed = new Discord.RichEmbed()
     .setColor("#FFFFFF")
-    .setTitle(`Bienvenue ${member.user.username}`)
-    .setDescription("Merci d'avoir rejoint le serveurs")
-    .addField("Tu veux m'ajouter sur ton serveur ?", "[CLIQUE ICI](https://discordapp.com/oauth2/authorize?client_id=456370036979007500&scope=bot&permissions=88888888888)")
+    .setDescription("Bienvenue sur le serveur, viens parlé avec les joueurs")
+    .addField("PS :", "Pense à lire les règles")
+    .addField("Pour ajouté le bot", "[Shield Bot](https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888)")
     .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé")
-    .setThumbnail(member.iconURL)
-    .setAuthor("Shield bot")
+    .setThumbnail(member.user.avatarURL)
+    .setAuthor(member.user.username , member.user.avatarURL)
     prive.send(bienvenue_embed).catch(e => {});
   })
 })
