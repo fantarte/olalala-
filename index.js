@@ -397,22 +397,23 @@ bot.on("message", message => {
       
         if (message.content === '.rainbow') {
           if(message.channel.type === "dm") return;
-
+          if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: ** Tu n'as pas la permission `ADMINISTRATOR` ** :x:");
+          else if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send(":x: ** Je n'ai pas la permission `ADMINISTRATOR` ** :x:");
+          else if (!message.guild.roles.find("name", "Rainbow")) return console.log(":x: **  Le role `Rainbow` n'existe pas ** :x:");
+         else {
         let args = message.content.split(' ')
         args.shift()
         message.delete()
-        if (!message.member.hasPermission("ADMINISTRATOR")) return message.reply(":x: ** Tu n'as pas la permission `ADMINISTRATOR` ** :x:");
-        else if(!message.guild.member(bot.user).hasPermission("ADMINISTRATOR")) return message.channel.send(":x: ** Je n'ai pas la permission `ADMINISTRATOR` ** :x:")
-        else if (!message.guild.roles.find("name", "Rainbow")) return console.log(":x: **  Le role `Rainbow` n'existe pas ** :x:")
-        else {
           message.reply(':rainbow: La commande est maintenant activé, il te reste juste à attribué le role! :rainbow:')
         var myRainbow = message.guild.roles.find("name", "Rainbow")
         let i = 0;
           let interval = setInterval(function () {
-           myRainbow.setColor("RANDOM").then(i++)
+myRainbow.setColor("RANDOM")
+          
         }, 750)
+          }
       }
-    }
+       
       if(message.content.startsWith(".clear")){
         if(message.channel.type === "dm") return;
 
