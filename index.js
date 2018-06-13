@@ -337,14 +337,27 @@ bot.on("message", message => {
     .addField("FLIP", " :moneybag: La piece affiche : **"+reponse+"**")
     message.channel.send(flip_embed).catch(e => {});
     }
-    if(message.content === ".c"){
+    if(message.content === ".blague"){
       if(message.channel.type === "dm") return;
-
-      var voilatableau = ["Ptdrr t ki ?", "Ohhh mon maitre, tu es enfin de retour ?", "Tu es le meilleur, puis-je devenir ton disciple ?", "Degage toi","Mais QUI ES-TU ???","Je ne te connais pas dsl"]
-      var voila = voilatableau[Math.floor(Math.random()*6)]
+      var voilatableau = ["Pk les belugas sont t'il en voit de disparition ? Parce que y'a pas assez de belufille",
+      "Que dit un chat qui rentre dans une pharmacie ? Vous avez du sirop pour matou?",
+      "Comment s'appelle le dinosaures gay? Le tripotanus",
+      "L'autre jours j'ai fait une blague sur les paraplégique et sa à pas super marché",
+      "Qu'est-ce qui est mou et qui ce jette? Un paraplégique",
+      "Pk les mexicains mangent t'il au toilettes ? Parce qu'ils aime mangé et pissé",
+      "Quel est le point commun entre un tampon et téléphone ? On sait qui est au bout du fil",
+      "Un électricien est mort on va mettre sa famille au courant",
+      "C'est 2 chinois qui joue au bowling y'en n'a un qui fait un strike et son pote lui dit 'c'est beau ling'",
+      "Quel est la dif entre la sodomie et les brocoli? Y'en n'a pas même avec du beurres les enfants aime pas sa",
+      "Qu'est-ce qu'un hamster dans l'espace ? Un hamsteroide",
+      "Comment on n'appelle un nain qui travail à la poste? Un nain posteur",
+      "Pk les policier n'ont pas de rides? Parce qu'ils sont la peau lisse","Que fait un zoophiles qui veut sauté ? Bah il prend son élan",
+      "Pk le film Harry Potter est classé fantastique ? Parce que le roux à des amis",
+      "Comment appele t'on un grand rouquin? Un coton tige usagé"]
+      var voila = voilatableau[Math.floor(Math.random()*15)]
       let voila_embed = new Discord.RichEmbed()
       .setColor("#FFFFFF")
-     .setDescription(":beer: **"+voila+"** :beers: ")
+     .setDescription("**"+voila+"**")
       return message.channel.send(voila_embed).catch(e => {});
     }
 })
@@ -435,7 +448,7 @@ bot.on("message", message => {
 
   let aide_embed = new Discord.RichEmbed()
   .setTitle("Aide Shield Bot")
-  .setURL("https://discordapp.com/oauth2/authorize?client_id=456370036979007500&scope=bot&permissions=88888888888")
+  .setURL("https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888")
   .setDescription("Rejoindre le support 100 % Français de Shield Bot [cliquez ici](https://discord.gg/uyQcByK) :flag_fr: ")
 .addField(":stuck_out_tongue_winking_eye:  .fun", "Faites `.fun` afficher les commandes droles !", true)
 .addField(":tools: .moderation", "Faites `.moderation` pour afficher les commandes de modération !", true)
@@ -454,7 +467,7 @@ bot.on("message", message => {
     .addField(".say","Fais dire une phrase au Shield Bot", true)
     .addField(".flip", "Jouez au pile ou face avec le bot", true)
     .addField(".8ball", "Posez une question au bot", true)
-    .addField(".c", "Le bot vous revele vôtre vraie identitée...", true)
+    .addField(".blague", "Le bot vous revele vôtre vraie identitée...", true)
     .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé", bot.user.avatarURL)
     .setColor("#FFFFFF")
 
