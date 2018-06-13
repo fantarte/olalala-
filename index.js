@@ -261,7 +261,7 @@ bot.on('guildMemberAdd', member => {
     .setColor("#FFFFFF")
     .setTitle(`Bienvenue ${member.user.username}`)
     .setDescription("Merci d'avoir rejoint le serveurs")
-    .addField("Tu veux m'ajouter sur ton serveur ?", "[CLIQUE ICI](https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888)")
+    .addField("Tu veux m'ajouter sur ton serveur ?", "[CLIQUE ICI](https://discordapp.com/oauth2/authorize?client_id=456370036979007500&scope=bot&permissions=88888888888)")
     .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé")
     .setThumbnail(member.iconURL)
     .setAuthor("Shield bot")
@@ -435,7 +435,7 @@ bot.on("message", message => {
 
   let aide_embed = new Discord.RichEmbed()
   .setTitle("Aide Shield Bot")
-  .setURL("https://discordapp.com/oauth2/authorize?client_id=454015393779154945&scope=bot&permissions=88888888888")
+  .setURL("https://discordapp.com/oauth2/authorize?client_id=456370036979007500&scope=bot&permissions=88888888888")
   .setDescription("Rejoindre le support 100 % Français de Shield Bot [cliquez ici](https://discord.gg/uyQcByK) :flag_fr: ")
 .addField(":stuck_out_tongue_winking_eye:  .fun", "Faites `.fun` afficher les commandes droles !", true)
 .addField(":tools: .moderation", "Faites `.moderation` pour afficher les commandes de modération !", true)
