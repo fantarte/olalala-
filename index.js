@@ -4,6 +4,7 @@ const fs = require('fs');
 const moment = require("moment");
  var prefix = "."
 bot.on('ready',() => {
+     bot.user.setActivity("protéger des serveurs ! ", {url:"https://www.twitch.tv/Shield", type: "STREAMING"}).catch(e => {});
   //invit link
   console.log("---------------------------")
 });  
