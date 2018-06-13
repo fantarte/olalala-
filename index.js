@@ -468,7 +468,7 @@ bot.on("message", message => {
     .addField(".say","Fais dire une phrase au Shield Bot", true)
     .addField(".flip", "Jouez au pile ou face avec le bot", true)
     .addField(".8ball", "Posez une question au bot", true)
-    .addField(".blague", "Le bot vous revele vôtre vraie identitée...", true)
+    .addField(".blague", "Le bot vous proposes des blagues hyper drole", true)
     .setFooter("Copyright © 2018 Shield Bot - Tout droit réservé", bot.user.avatarURL)
     .setColor("#FFFFFF")
 
