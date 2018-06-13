@@ -409,8 +409,7 @@ bot.on("message", message => {
         var myRainbow = message.guild.roles.find("name", "Rainbow")
         let i = 0;
           let interval = setInterval(function () {
-myRainbow.setColor("RANDOM").catch(e => {});
-          
+           myRainbow.setColor("RANDOM").then(i++)
         }, 750)
       }
     }
